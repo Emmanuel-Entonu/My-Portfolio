@@ -1,0 +1,51 @@
+body {
+    background: linear-gradient(135deg, #1f1c2c, #928dab);
+    color: white;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .countdown {
+    font-size: 2.5rem;
+    margin-top: 20px;
+  }
+  
+  .countdown span {
+    margin: 0 10px;
+  }
+  
+  .signup-form {
+    background: #ffffff10;
+    padding: 2rem;
+    border-radius: 12px;
+    backdrop-filter: blur(8px);
+  }
+  
+  .footer {
+    background: #0d0d0d;
+    padding: 1rem 0;
+    text-align: center;
+  }
+.countdown span {
+    display: inline-block;
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+  
+  .success-message {
+    background-color: #28a745;
+    color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+    margin-top: 15px;
+  }
+  
+  
+  input:invalid {
+    border-color: #dc3545;
+  }
+  
+  
+  input:valid {
+    border-color: #28a745;
+  }
+  

@@ -1,0 +1,78 @@
+.navbar {
+    transition: background-color 0.3s ease;
+  }
+  
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0f0f0f, #1a1a2e);
+    color: white;
+  }
+  
+  .hero-img {
+    max-height: 400px;
+  }
+  
+  .feature-card {
+    background-color: white;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+  }
+  
+  .feature-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  #gallery img {
+    transition: transform 0.3s ease;
+  }
+  
+  #gallery img:hover {
+    transform: scale(1.05);
+  }
+
+.gradient-btn {
+    background: linear-gradient(135deg, #0f3460, #16213e, #2980b9);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+  }
+  
+  .gradient-btn:hover {
+    background: linear-gradient(135deg, #2980b9, #16213e, #0f3460);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+  }
+
+  /* Navbar solid on scroll */
+.navbar.scrolled {
+  background-color: #0f0f0f !important;
+}
+
+/* Ensure toggler is visible on transparent background */
+.navbar-dark .navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.navbar-dark .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255,255,255,0.85%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* Smooth collapse transition */
+.collapse.navbar-collapse {
+  transition: all 0.3s ease;
+}
+
+/* Increase spacing between nav links on mobile */
+.navbar-nav .nav-link {
+  padding: 0.75rem 1rem;
+}
+
+/* Optional: Change nav link hover effect slightly */
+.navbar-nav .nav-link:hover {
+  color: #dcdcdc;
+}
+
+  

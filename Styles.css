@@ -1,0 +1,92 @@
+/* Styles.css */
+
+/* Base styles */
+body {
+    scroll-behavior: smooth;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa;
+  }
+  
+  /* Navbar */
+  .navbar-brand {
+    font-size: 1.6rem;
+  }
+  
+  /* Hero Section */
+  .hero-section {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #fff;
+    padding: 100px 0;
+  }
+  
+  /* Section Headings */
+  section h2 {
+    font-weight: bold;
+  }
+  
+  /* Buttons (keep your color scheme) */
+  .btn-primary {
+    background: linear-gradient(135deg, #43cea2, #185a9d);
+    border: none;
+  }
+  
+  .btn-primary:hover {
+    background: linear-gradient(135deg, #185a9d, #43cea2);
+  }
+  
+  /* Projects */
+  #projects {
+    background-color: #ffffff;
+  }
+  
+  .card {
+    transition: all 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Contact */
+  #contact {
+    background-color: #ffffff;
+  }
+  
+  .contact-form input,
+  .contact-form textarea {
+    border-radius: 8px;
+    padding: 0.75rem;
+  }
+  
+  .contact-form input:focus,
+  .contact-form textarea:focus {
+    box-shadow: 0 0 8px rgba(67, 206, 162, 0.8);
+    border-color: #43cea2;
+  }
+  
+  /* Footer */
+  footer {
+    background: linear-gradient(135deg, #232526, #414345);
+    color: #ccc;
+  }
+  
+  footer a {
+    color: #43cea2;
+    text-decoration: none;
+  }
+  
+  footer a:hover {
+    color: #00c6ff;
+  }
+
+  /* About Me Image (Make perfect circle) */
+.about-img {
+  width: 250px;
+  height: 250px;
+  object-fit: cover; /* Crop/scale image to fill */
+  border-radius: 50%; /* Force circle shape */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+  
