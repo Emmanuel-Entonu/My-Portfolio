@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Upcoming Event | Countdown</title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+
+<section class="vh-100 d-flex flex-column justify-content-center align-items-center text-center">
+  <h1 class="display-4 fw-bold">Grand Regal Expo 2025</h1>
+  <p class="lead">Join us for the ultimate experience!</p>
+  
+  
+  <div class="countdown d-flex justify-content-center" id="countdown">
+    <span id="days">00</span> :
+    <span id="hours">00</span> :
+    <span id="minutes">00</span> :
+    <span id="seconds">00</span>
+  </div>
+
+  <a href="#signup" class="btn btn-light mt-4">Register Now</a>
+</section>
+
+
+<section id="signup" class="py-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <h2 class="text-center mb-4">Sign Up for Updates</h2>
+        <form class="signup-form">
+          <div class="mb-3">
+            <label for="name" class="form-label">Full Name</label>
+            <input type="text" id="name" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email Address</label>
+            <input type="email" id="email" class="form-control" required>
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<footer class="footer text-white">
+  &copy; 2025 Grand Regal Expo. All rights reserved.
+</footer>
+
+<script src="js/countdown.js"></script>
+</body>
+</html>
