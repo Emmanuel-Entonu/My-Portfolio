@@ -539,7 +539,8 @@ if (window.innerWidth > 991.98) {
     el.addEventListener('mouseleave', () => ring.classList.remove('hovering'));
   });
 }
-
+  
+let resizeTimeout;
 window.addEventListener('resize', () => {
   clearTimeout(resizeTimeout);
   resizeTimeout = setTimeout(() => {
@@ -555,4 +556,5 @@ if ('ontouchstart' in window) {
 </body>
 
 </html>
+
 
