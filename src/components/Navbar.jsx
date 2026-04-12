@@ -30,7 +30,7 @@ export default function Navbar() {
     >
       <div className="nav-inner">
         <a href="#" className="serif" style={{ fontSize: 17, fontWeight: 700, letterSpacing: '0.08em', color: '#CC2222', textDecoration: 'none', textTransform: 'uppercase' }}>
-          <DecryptedText text="Portfolio" animateOn="hover" speed={70} maxIterations={14} encryptedClassName="char-encrypted" className="char-revealed" />
+          <DecryptedText text="My Portfolio" animateOn="hover" speed={70} maxIterations={14} encryptedClassName="char-encrypted" className="char-revealed" />
         </a>
 
         {/* Desktop links */}
