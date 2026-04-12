@@ -1,0 +1,201 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+
+    <!-- Grain noise -->
+    <filter id="grain" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="4" stitchTiles="stitch" result="noise"/>
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise"/>
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="overlay" result="blended"/>
+      <feComposite in="blended" in2="SourceGraphic" operator="in"/>
+    </filter>
+
+    <!-- Red glow -->
+    <filter id="redGlow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="12" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <!-- Soft glow -->
+    <filter id="softGlow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="28" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <!-- Streak blur -->
+    <filter id="streakBlur">
+      <feGaussianBlur stdDeviation="2.5 0.5"/>
+    </filter>
+    <filter id="streakBlur2">
+      <feGaussianBlur stdDeviation="1.5 0.3"/>
+    </filter>
+
+    <!-- Gradients -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0c0c0c"/>
+      <stop offset="100%" style="stop-color:#080808"/>
+    </linearGradient>
+
+    <linearGradient id="redLine" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#CC2222;stop-opacity:0"/>
+      <stop offset="30%" style="stop-color:#CC2222;stop-opacity:0.8"/>
+      <stop offset="70%" style="stop-color:#EF4444;stop-opacity:0.8"/>
+      <stop offset="100%" style="stop-color:#CC2222;stop-opacity:0"/>
+    </linearGradient>
+
+    <linearGradient id="streakL1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#CC2222;stop-opacity:0"/>
+      <stop offset="60%" style="stop-color:#EF4444;stop-opacity:0.9"/>
+      <stop offset="100%" style="stop-color:#FF6666;stop-opacity:0"/>
+    </linearGradient>
+
+    <linearGradient id="streakL2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#e8e0cc;stop-opacity:0"/>
+      <stop offset="50%" style="stop-color:#e8e0cc;stop-opacity:0.7"/>
+      <stop offset="100%" style="stop-color:#e8e0cc;stop-opacity:0"/>
+    </linearGradient>
+
+    <linearGradient id="streakL3" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#CC2222;stop-opacity:0"/>
+      <stop offset="40%" style="stop-color:#CC2222;stop-opacity:0.6"/>
+      <stop offset="100%" style="stop-color:#CC2222;stop-opacity:0"/>
+    </linearGradient>
+
+    <radialGradient id="centerGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#CC2222;stop-opacity:0.12"/>
+      <stop offset="60%" style="stop-color:#CC2222;stop-opacity:0.04"/>
+      <stop offset="100%" style="stop-color:#CC2222;stop-opacity:0"/>
+    </radialGradient>
+
+    <radialGradient id="leftGlow" cx="0%" cy="60%" r="60%">
+      <stop offset="0%" style="stop-color:#CC2222;stop-opacity:0.18"/>
+      <stop offset="100%" style="stop-color:#CC2222;stop-opacity:0"/>
+    </radialGradient>
+
+    <clipPath id="imgClip">
+      <rect width="1200" height="630"/>
+    </clipPath>
+
+  </defs>
+
+  <!-- ── Background ── -->
+  <rect width="1200" height="630" fill="url(#bgGrad)"/>
+
+  <!-- ── Left-side ambient glow (like hyperspeed vanishing point) ── -->
+  <rect width="1200" height="630" fill="url(#leftGlow)" opacity="0.7"/>
+  <rect width="1200" height="630" fill="url(#centerGlow)"/>
+
+  <!-- ── Hyperspeed-style light streaks — LEFT side (going right) ── -->
+  <g clip-path="url(#imgClip)" filter="url(#streakBlur)">
+    <!-- Red streaks -->
+    <rect x="-60"  y="180" width="480" height="2"   fill="url(#streakL1)" opacity="0.9"/>
+    <rect x="-40"  y="196" width="380" height="1.2" fill="url(#streakL1)" opacity="0.7"/>
+    <rect x="-80"  y="210" width="540" height="1.8" fill="url(#streakL1)" opacity="0.8"/>
+    <rect x="-20"  y="230" width="300" height="0.8" fill="url(#streakL1)" opacity="0.5"/>
+    <rect x="-100" y="248" width="600" height="2.5" fill="url(#streakL1)" opacity="0.85"/>
+    <rect x="0"    y="265" width="260" height="1"   fill="url(#streakL1)" opacity="0.4"/>
+    <rect x="-50"  y="285" width="420" height="1.5" fill="url(#streakL1)" opacity="0.7"/>
+    <rect x="-30"  y="300" width="350" height="1"   fill="url(#streakL1)" opacity="0.55"/>
+    <rect x="-90"  y="318" width="500" height="2"   fill="url(#streakL1)" opacity="0.75"/>
+    <rect x="20"   y="338" width="200" height="0.8" fill="url(#streakL1)" opacity="0.35"/>
+    <rect x="-60"  y="355" width="460" height="1.5" fill="url(#streakL1)" opacity="0.65"/>
+    <rect x="-10"  y="372" width="280" height="1"   fill="url(#streakL1)" opacity="0.45"/>
+    <rect x="-70"  y="392" width="520" height="2"   fill="url(#streakL1)" opacity="0.8"/>
+    <rect x="10"   y="410" width="220" height="0.8" fill="url(#streakL1)" opacity="0.3"/>
+    <!-- Cream streaks (right car lights) -->
+    <rect x="-30"  y="188" width="220" height="1.5" fill="url(#streakL2)" opacity="0.55"/>
+    <rect x="-50"  y="222" width="300" height="1"   fill="url(#streakL2)" opacity="0.4"/>
+    <rect x="-20"  y="275" width="180" height="1.2" fill="url(#streakL2)" opacity="0.5"/>
+    <rect x="-40"  y="345" width="260" height="1"   fill="url(#streakL2)" opacity="0.35"/>
+    <rect x="-10"  y="400" width="200" height="1.5" fill="url(#streakL2)" opacity="0.45"/>
+  </g>
+
+  <!-- ── Right-side streaks (smaller, coming from right) ── -->
+  <g clip-path="url(#imgClip)" filter="url(#streakBlur2)">
+    <rect x="920" y="200" width="340" height="1.5" fill="url(#streakL3)" opacity="0.5" transform="scale(-1,1) translate(-1200,0)"/>
+    <rect x="940" y="240" width="280" height="1"   fill="url(#streakL3)" opacity="0.35" transform="scale(-1,1) translate(-1200,0)"/>
+    <rect x="900" y="310" width="360" height="2"   fill="url(#streakL3)" opacity="0.45" transform="scale(-1,1) translate(-1200,0)"/>
+    <rect x="960" y="380" width="250" height="1.2" fill="url(#streakL3)" opacity="0.3" transform="scale(-1,1) translate(-1200,0)"/>
+    <rect x="910" y="420" width="320" height="1.5" fill="url(#streakL3)" opacity="0.4" transform="scale(-1,1) translate(-1200,0)"/>
+  </g>
+
+  <!-- ── Vertical red accent bar (left edge) ── -->
+  <rect x="0" y="0" width="4" height="630" fill="#CC2222" opacity="0.7"/>
+  <rect x="4" y="0" width="2" height="630" fill="#EF4444" opacity="0.15"/>
+
+  <!-- ── Top + Bottom border lines ── -->
+  <rect x="0" y="0"   width="1200" height="2" fill="url(#redLine)" opacity="0.5"/>
+  <rect x="0" y="628" width="1200" height="2" fill="url(#redLine)" opacity="0.5"/>
+
+  <!-- ── Corner brackets ── -->
+  <!-- Top-left -->
+  <rect x="32" y="32" width="48" height="2" fill="#CC2222" opacity="0.6"/>
+  <rect x="32" y="32" width="2" height="48" fill="#CC2222" opacity="0.6"/>
+  <!-- Top-right -->
+  <rect x="1120" y="32" width="48" height="2" fill="#CC2222" opacity="0.6"/>
+  <rect x="1166" y="32" width="2" height="48" fill="#CC2222" opacity="0.6"/>
+  <!-- Bottom-left -->
+  <rect x="32" y="596" width="48" height="2" fill="#CC2222" opacity="0.6"/>
+  <rect x="32" y="550" width="2" height="48" fill="#CC2222" opacity="0.6"/>
+  <!-- Bottom-right -->
+  <rect x="1120" y="596" width="48" height="2" fill="#CC2222" opacity="0.6"/>
+  <rect x="1166" y="550" width="2" height="48" fill="#CC2222" opacity="0.6"/>
+
+  <!-- ── EE Monogram ── -->
+  <!-- Glow halo behind the Es -->
+  <text x="598" y="378"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="310" font-weight="900"
+    fill="#CC2222" opacity="0.08"
+    text-anchor="middle"
+    filter="url(#softGlow)">EE</text>
+
+  <!-- First E — solid cream fill -->
+  <text x="512" y="370"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="290" font-weight="900"
+    fill="#e8e0cc"
+    text-anchor="middle">E</text>
+
+  <!-- Second E — red stroke outline with glow -->
+  <text x="688" y="370"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="290" font-weight="900"
+    fill="none"
+    stroke="#CC2222" stroke-width="3.5"
+    text-anchor="middle"
+    filter="url(#redGlow)">E</text>
+
+  <!-- ── Horizontal divider ── -->
+  <rect x="360" y="398" width="480" height="1" fill="url(#redLine)" opacity="0.6"/>
+
+  <!-- ── Small red dot accent ── -->
+  <circle cx="596" cy="398" r="3" fill="#CC2222" opacity="0.8"/>
+
+  <!-- ── Name ── -->
+  <text x="600" y="448"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="32" font-weight="700"
+    fill="#e8e0cc" opacity="0.95"
+    text-anchor="middle"
+    letter-spacing="8">EMMANUEL ENTONU</text>
+
+  <!-- ── Role ── -->
+  <text x="600" y="490"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="14" font-weight="400"
+    fill="#CC2222" opacity="0.8"
+    text-anchor="middle"
+    letter-spacing="5">FULL STACK WEB DEVELOPER</text>
+
+  <!-- ── URL watermark ── -->
+  <text x="600" y="572"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="11"
+    fill="#e8e0cc" opacity="0.12"
+    text-anchor="middle"
+    letter-spacing="2">emmanuel-entonu.vercel.app</text>
+
+  <!-- ── Grain overlay ── -->
+  <rect width="1200" height="630" fill="#080808" opacity="0.03" filter="url(#grain)"/>
+
+</svg>
