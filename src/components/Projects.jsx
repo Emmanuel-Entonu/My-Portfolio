@@ -54,7 +54,7 @@ const projects = [
     type: 'client',
     featured: false,
     title: 'Place to Worship',
-    desc: 'A comprehensive church directory platform helping users find and connect with places of worship near them.',
+    desc: 'A church directory platform based in Germany, helping users find and connect with places of worship near them.',
     tags: ['Next.js', 'PostgreSQL'],
     image: '/Place to worshhip.png',
     github: '#',
