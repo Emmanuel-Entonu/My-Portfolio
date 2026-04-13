@@ -49,6 +49,17 @@ const projects = [
     github: '#',
     live: 'https://weather-app-mu-ten-91.vercel.app',
   },
+  {
+    id: '05',
+    type: 'client',
+    featured: false,
+    title: 'Place to Worship',
+    desc: 'A comprehensive church directory platform helping users find and connect with places of worship near them.',
+    tags: ['Next.js', 'PostgreSQL'],
+    image: '/Place to worshhip.png',
+    github: '#',
+    live: 'https://www.placetoworship.org',
+  },
 ];
 
 function TypeBadge({ type }) {
