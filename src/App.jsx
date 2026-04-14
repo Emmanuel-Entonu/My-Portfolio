@@ -34,7 +34,7 @@ function CursorSpotlight() {
     return () => window.removeEventListener('mousemove', move)
   }, [])
   return (
-    <div ref={ref} style={{
+    <div ref={ref} className="cursor-spotlight" style={{
       position: 'fixed', top: 0, left: 0,
       width: 700, height: 700, borderRadius: '50%',
       background: 'radial-gradient(circle at center, rgba(200,10,10,0.11) 0%, rgba(140,5,5,0.05) 40%, transparent 70%)',

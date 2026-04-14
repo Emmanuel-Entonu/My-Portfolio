@@ -115,6 +115,11 @@ body::before {
 /* Prevent animation x-shifts from causing horizontal scroll */
 .section-pad { overflow: hidden; }
 
+/* Cursor spotlight is desktop-only (no mouse on touch devices) */
+@media (max-width: 1024px) {
+  .cursor-spotlight { display: none; }
+}
+
 /* ── Layout containers ── */
 .container {
   max-width: 1200px;
@@ -252,7 +257,7 @@ body::before {
   .container      { padding: 0 20px; }
   .section-pad    { padding: 72px 0; }
   .nav-inner      { padding: 0 20px; }
-  .hero-container { padding-top: 108px; padding-bottom: 56px; }
+  .hero-container { padding-top: 88px; padding-bottom: 56px; }
   .hero-name      { font-size: clamp(30px, 9.5vw, 56px); }
 
   .hero-grid      { grid-template-columns: 1fr; gap: 0; overflow-x: hidden; }
@@ -271,6 +276,9 @@ body::before {
 
   /* Hero snaps to top on mobile so stacked content has no gap below */
   .hero-section { align-items: flex-start; }
+
+  /* Hide eyebrow — too close to navbar on mobile */
+  .hero-eyebrow { display: none; }
 
   /* Photo moves below text on mobile */
   .hero-photo       { display: block; width: 100%; max-width: 100%; margin-top: 32px; }
