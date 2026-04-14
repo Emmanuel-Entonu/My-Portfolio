@@ -15,7 +15,7 @@ const fadeUp  = { hidden: { y: 24, opacity: 0 }, show: { y: 0, opacity: 1, trans
 
 export default function Hero() {
   return (
-    <section id="hero" className="hero-section" style={{ minHeight: '100svh', display: 'flex', alignItems: 'center', position: 'relative', overflow: 'hidden' }}>
+    <section id="hero" className="hero-section" style={{ minHeight: '100svh', display: 'flex', position: 'relative', overflow: 'hidden' }}>
 
 
       <div className="wrap hero-container">
