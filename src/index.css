@@ -282,7 +282,7 @@ body::before {
      align-items: flex-start so content pins to top.
      This is on the CLASS (not inline) so it works. */
   .hero-section   { align-items: flex-start; }
-  .hero-container { padding-top: 96px; padding-bottom: 48px; }
+  .hero-container { padding-top: 120px; padding-bottom: 48px; }
   .hero-name      { font-size: clamp(36px, 10vw, 60px); line-height: 0.92; }
 
   /* Hero grid — single column, photo below text */
