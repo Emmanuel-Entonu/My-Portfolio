@@ -87,7 +87,7 @@ const HYPERSPEED_OPTIONS = {
 export default function App() {
   return (
     <ErrorBoundary>
-      <div style={{ background: '#080808', minHeight: '100vh', position: 'relative' }}>
+      <div style={{ background: '#080808', minHeight: '100vh', position: 'relative', width: '100%', maxWidth: '100vw', overflowX: 'hidden' }}>
         {/* Hyperspeed background */}
         <div style={{ position: 'fixed', inset: 0, zIndex: 0, pointerEvents: 'none' }}>
           <Hyperspeed effectOptions={HYPERSPEED_OPTIONS} />
