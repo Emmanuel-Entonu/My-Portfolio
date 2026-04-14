@@ -67,10 +67,6 @@ body::before {
   gap: 14px;
 }
 
-::-webkit-scrollbar { width: 3px; }
-::-webkit-scrollbar-track { background: #080808; }
-::-webkit-scrollbar-thumb { background: #7F1D1D; border-radius: 2px; }
-
 .serif { font-family: 'Syne', sans-serif; }
 
 /* ── DecryptedText char states ── */
@@ -115,6 +111,9 @@ body::before {
   height: 1px;
   background: linear-gradient(90deg, transparent, rgba(204,34,34,0.15), transparent);
 }
+
+/* Prevent animation x-shifts from causing horizontal scroll */
+.section-pad { overflow: hidden; }
 
 /* ── Layout containers ── */
 .container {
@@ -253,7 +252,7 @@ body::before {
   .container      { padding: 0 20px; }
   .section-pad    { padding: 72px 0; }
   .nav-inner      { padding: 0 20px; }
-  .hero-container { padding-top: 88px; padding-bottom: 56px; }
+  .hero-container { padding-top: 108px; padding-bottom: 56px; }
   .hero-name      { font-size: clamp(30px, 9.5vw, 56px); }
 
   .hero-grid      { grid-template-columns: 1fr; gap: 0; overflow-x: hidden; }

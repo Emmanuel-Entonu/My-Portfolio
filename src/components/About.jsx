@@ -16,8 +16,8 @@ const stats = [
   { value: '100%', label: 'Dedicated' },
 ];
 
-const fadeL = { hidden: { x: -30, opacity: 0 }, show: { x: 0, opacity: 1, transition: { duration: 0.8, ease: [0.22,1,0.36,1] } } };
-const fadeR = { hidden: { x:  30, opacity: 0 }, show: { x: 0, opacity: 1, transition: { duration: 0.8, ease: [0.22,1,0.36,1], delay: 0.15 } } };
+const fadeL = { hidden: { y: 24, opacity: 0 }, show: { y: 0, opacity: 1, transition: { duration: 0.8, ease: [0.22,1,0.36,1] } } };
+const fadeR = { hidden: { y: 24, opacity: 0 }, show: { y: 0, opacity: 1, transition: { duration: 0.8, ease: [0.22,1,0.36,1], delay: 0.15 } } };
 
 export default function About() {
   const ref = useRef(null);
