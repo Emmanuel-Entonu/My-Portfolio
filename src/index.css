@@ -262,7 +262,7 @@ body::before {
   .wrap           { padding: 0 20px; }
   .section-pad    { padding: 72px 0; }
   .nav-inner      { padding: 0 20px; }
-  .hero-container { padding-top: 88px; padding-bottom: 56px; }
+  .hero-container { padding-top: 100px; padding-bottom: 56px; }
   .hero-name      { font-size: clamp(30px, 9.5vw, 56px); }
 
   .hero-grid      { grid-template-columns: 1fr; gap: 0; overflow-x: hidden; }

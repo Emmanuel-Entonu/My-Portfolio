@@ -23,13 +23,6 @@ export default function Hero() {
 
           {/* TEXT */}
           <motion.div variants={stagger} initial="hidden" animate="show" style={{ display: 'flex', flexDirection: 'column' }}>
-            <motion.div className="hero-eyebrow" variants={fadeUp} style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 40, flexWrap: 'wrap' }}>
-              <div style={{ width: 40, height: 1, background: '#CC2222', opacity: 0.6 }} />
-              <span style={{ fontSize: 11, letterSpacing: '0.3em', textTransform: 'uppercase', color: 'rgba(204,34,34,0.7)' }}>
-                <DecryptedText text="Portfolio — Developer" animateOn="view" speed={70} maxIterations={20} encryptedClassName="char-encrypted" className="char-revealed" />
-              </span>
-            </motion.div>
-
             <motion.div variants={fadeUp}>
               <div className="serif hero-name" style={{ color: '#e8e0cc', marginBottom: 6 }}>
                 <DecryptedText
