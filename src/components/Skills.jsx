@@ -90,7 +90,7 @@ export default function Skills() {
     <>
       <div className="divider" />
       <section id="skills" className="section-pad" ref={ref}>
-        <div className="container">
+        <div className="wrap">
           <div className="section-tag"><span><DecryptedText text="Skills" animateOn="view" speed={75} maxIterations={18} encryptedClassName="char-encrypted" className="char-revealed" /></span></div>
 
           <div className="skills-layout">

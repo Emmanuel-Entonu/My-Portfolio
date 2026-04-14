@@ -27,7 +27,7 @@ export default function About() {
     <>
       <div className="divider" />
       <section id="about" className="section-pad" ref={ref}>
-        <div className="container">
+        <div className="wrap">
           <div className="section-tag"><span><DecryptedText text="About Me" animateOn="view" speed={75} maxIterations={18} encryptedClassName="char-encrypted" className="char-revealed" /></span></div>
 
           <div className="two-col">

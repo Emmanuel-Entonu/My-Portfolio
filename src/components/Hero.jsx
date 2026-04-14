@@ -18,7 +18,7 @@ export default function Hero() {
     <section id="hero" className="hero-section" style={{ minHeight: '100svh', display: 'flex', alignItems: 'center', position: 'relative', overflow: 'hidden' }}>
 
 
-      <div className="container hero-container">
+      <div className="wrap hero-container">
         <div className="hero-grid">
 
           {/* TEXT */}

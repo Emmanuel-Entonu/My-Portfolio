@@ -46,7 +46,7 @@ export default function Contact() {
     <>
       <div className="divider" />
       <section id="contact" className="section-pad" ref={ref}>
-        <div className="container">
+        <div className="wrap">
           <div className="section-tag"><span><DecryptedText text="Contact" animateOn="view" speed={75} maxIterations={18} encryptedClassName="char-encrypted" className="char-revealed" /></span></div>
 
           <div className="contact-grid">

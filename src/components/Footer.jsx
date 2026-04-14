@@ -13,7 +13,7 @@ export default function Footer() {
     <>
       <div className="divider" />
       <footer style={{ padding: '40px 0' }}>
-        <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 20 }}>
+        <div className="wrap" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 20 }}>
           <span className="serif" style={{ fontSize: 15, fontWeight: 700, letterSpacing: '0.08em', color: 'rgba(204,34,34,0.5)', textTransform: 'uppercase' }}>
             <DecryptedText text="Emmanuel Entonu" animateOn="hover" speed={70} maxIterations={14} encryptedClassName="char-encrypted" className="char-revealed" />
           </span>

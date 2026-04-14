@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node -e ':*)",
+      "Bash(npx vite:*)",
+      "Bash(cat dist/assets/*.css)",
+      "Bash(grep -n '\"container\"' src/components/*.jsx)"
+    ]
+  }
+}

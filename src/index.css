@@ -126,7 +126,7 @@ body::before {
 }
 
 /* ── Layout containers ── */
-.container {
+.wrap {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 40px;
@@ -259,7 +259,7 @@ body::before {
 
 /* ── 768px ── */
 @media (max-width: 768px) {
-  .container      { padding: 0 20px; }
+  .wrap           { padding: 0 20px; }
   .section-pad    { padding: 72px 0; }
   .nav-inner      { padding: 0 20px; }
   .hero-container { padding-top: 88px; padding-bottom: 56px; }
@@ -298,7 +298,7 @@ body::before {
 
 /* ── 480px ── */
 @media (max-width: 480px) {
-  .container      { padding: 0 16px; }
+  .wrap           { padding: 0 16px; }
   .section-pad    { padding: 56px 0; }
   .six-col        { grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 10px; }
   .three-col      { grid-template-columns: 1fr; }
