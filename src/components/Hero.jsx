@@ -15,7 +15,7 @@ const fadeUp  = { hidden: { y: 24, opacity: 0 }, show: { y: 0, opacity: 1, trans
 
 export default function Hero() {
   return (
-    <section id="hero" style={{ minHeight: '100svh', height: '100svh', display: 'flex', alignItems: 'center', position: 'relative', overflow: 'hidden' }}>
+    <section id="hero" className="hero-section" style={{ minHeight: '100svh', display: 'flex', alignItems: 'center', position: 'relative', overflow: 'hidden' }}>
 
 
       <div className="container hero-container">
@@ -108,7 +108,7 @@ export default function Hero() {
                 <span style={{ fontSize: 10, letterSpacing: '0.3em', textTransform: 'uppercase', color: 'rgba(204,34,34,0.25)' }}>profile.jpg</span>
               </div>
               {/* Image — z-index 1, covers the fallback */}
-              <img src="/Profile picture.jpg" alt="Profile" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block', position: 'relative', zIndex: 1 }}
+              <img src="/Profile picture.jpg" alt="Profile" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 20%', display: 'block', position: 'relative', zIndex: 1 }}
                 onError={e => { e.currentTarget.style.display = 'none'; }} />
               {/* Gradient overlay — z-index 2, sits above image */}
               <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '40%', zIndex: 2, background: 'linear-gradient(to top,rgba(8,8,8,0.7),transparent)' }} />

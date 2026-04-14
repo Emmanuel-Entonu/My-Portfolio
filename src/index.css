@@ -253,7 +253,7 @@ body::before {
   .container      { padding: 0 20px; }
   .section-pad    { padding: 72px 0; }
   .nav-inner      { padding: 0 20px; }
-  .hero-container { padding-top: 90px; padding-bottom: 48px; }
+  .hero-container { padding-top: 88px; padding-bottom: 56px; }
   .hero-name      { font-size: clamp(30px, 9.5vw, 56px); }
 
   .hero-grid      { grid-template-columns: 1fr; gap: 0; overflow-x: hidden; }
@@ -270,9 +270,12 @@ body::before {
   .nav-links      { display: none; }
   .nav-hamburger  { display: block; }
 
+  /* Hero snaps to top on mobile so stacked content has no gap below */
+  .hero-section { align-items: flex-start; }
+
   /* Photo moves below text on mobile */
-  .hero-photo       { display: block; width: 100%; max-width: 100%; margin-top: 40px; }
-  .hero-photo-frame { width: 100%; max-width: 100%; height: 380px; }
+  .hero-photo       { display: block; width: 100%; max-width: 100%; margin-top: 32px; }
+  .hero-photo-frame { width: 100%; max-width: 100%; height: 340px; }
   .hero-photo-deco  { display: none; }
 
   .card           { padding: 24px 20px; }
