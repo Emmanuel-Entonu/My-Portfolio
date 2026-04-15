@@ -61,7 +61,14 @@ export default function Navbar() {
           >
             <nav style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 28, padding: '36px 0' }}>
               {links.map(l => (
-                <a key={l} href={`#${l.toLowerCase()}`} onClick={() => setOpen(false)}
+                <a key={l} href={`#${l.toLowerCase()}`}
+                  onClick={e => {
+                    e.preventDefault();
+                    setOpen(false);
+                    setTimeout(() => {
+                      document.getElementById(l.toLowerCase())?.scrollIntoView({ behavior: 'smooth' });
+                    }, 300);
+                  }}
                   style={{ fontSize: 13, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'rgba(232,224,204,0.55)', textDecoration: 'none' }}
                 >{l}</a>
               ))}
