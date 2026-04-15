@@ -22,9 +22,10 @@ export default function Navbar() {
       transition={{ duration: 0.5, ease: 'easeOut' }}
       style={{
         position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
-        background: 'rgba(8,8,8,0.95)',
-        backdropFilter: 'blur(12px)',
-        borderBottom: '1px solid rgba(204,34,34,0.08)',
+        background: scrolled ? 'rgba(8,8,8,0.92)' : 'transparent',
+        backdropFilter: scrolled ? 'blur(12px)' : 'none',
+        borderBottom: scrolled ? '1px solid rgba(204,34,34,0.08)' : 'none',
+        transition: 'background 0.4s ease, backdrop-filter 0.4s ease, border-color 0.4s ease',
       }}
     >
       <div className="nav-inner">

@@ -32,7 +32,7 @@ export default function About() {
 
           <div className="two-col">
             {/* LEFT */}
-            <motion.div variants={fadeL} initial="hidden" animate={inView ? 'show' : 'hidden'}>
+            <motion.div variants={fadeL} initial="hidden" animate={inView ? 'show' : 'hidden'} style={{ overflow: 'hidden', minWidth: 0 }}>
               <h2 className="serif" style={{ fontSize: 'clamp(36px,5vw,60px)', fontWeight: 900, lineHeight: 1.05, color: '#e8e0cc', marginBottom: 28 }}>
                 <DecryptedText text="Crafting with" animateOn="view" sequential revealDirection="start" speed={110} maxIterations={25} encryptedClassName="char-encrypted" className="char-revealed" />
                 <br /><span className="gold-gradient">purpose.</span>
@@ -62,8 +62,8 @@ export default function About() {
               {/* Stats */}
               <div className="about-stats">
                 {stats.map((s, i) => (
-                  <div key={s.label} style={{ padding: '32px 16px', textAlign: 'center', background: '#080808', borderRight: i < stats.length - 1 ? '1px solid rgba(204,34,34,0.08)' : 'none' }}>
-                    <div className="serif gold-gradient" style={{ fontSize: 38, fontWeight: 900, lineHeight: 1, marginBottom: 8 }}>{s.value}</div>
+                  <div key={s.label} className="stat-cell" style={{ textAlign: 'center', background: '#080808', borderRight: i < stats.length - 1 ? '1px solid rgba(204,34,34,0.08)' : 'none' }}>
+                    <div className="serif gold-gradient stat-value" style={{ fontWeight: 900, lineHeight: 1, marginBottom: 8 }}>{s.value}</div>
                     <div style={{ fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(232,224,204,0.3)' }}>{s.label}</div>
                   </div>
                 ))}
