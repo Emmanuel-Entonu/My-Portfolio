@@ -223,7 +223,7 @@ export default function Projects() {
               <br />
               <span className="gold-stroke" style={{ fontFamily: 'Syne, sans-serif' }}>for themselves.</span>
             </motion.h2>
-            <motion.a href="https://github.com/YOUR_GITHUB" target="_blank" rel="noopener noreferrer"
+            <motion.a href="https://github.com/Emmanuel-Entonu" target="_blank" rel="noopener noreferrer"
               initial={{ opacity: 0 }} animate={inView ? { opacity: 1 } : {}} transition={{ delay: 0.2 }}
               style={{ fontSize: 12, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(204,34,34,0.5)', textDecoration: 'none', whiteSpace: 'nowrap', transition: 'color 0.25s', flexShrink: 0, paddingBottom: 6 }}
               onMouseEnter={e => e.currentTarget.style.color = '#CC2222'}
