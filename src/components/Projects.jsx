@@ -36,7 +36,8 @@ const projects = [
     tags: ['Firebase', 'Google Maps', 'JavaScript'],
     image: '/Cozy Haven.png',
     github: '#',
-    live: 'https://thegreenambientlodge.com.ng',
+    live: null,
+    discontinued: true,
   },
   {
     id: '04',
@@ -200,7 +201,13 @@ function Card({ p, i, inView }) {
             <FaGithub style={{ fontSize: 14 }} /> GitHub
           </a>
         ) : <span />}
-        {p.live && (
+        {p.discontinued ? (
+          <span
+            style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 10, fontWeight: 600, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(232,224,204,0.4)', border: '1px solid rgba(232,224,204,0.12)', padding: '8px 14px', background: 'rgba(232,224,204,0.03)', cursor: 'not-allowed' }}
+          >
+            Client Discontinued Project
+          </span>
+        ) : p.live && (
           <a href={p.live} target="_blank" rel="noopener noreferrer"
             style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 11, fontWeight: 600, letterSpacing: '0.18em', textTransform: 'uppercase', color: '#CC2222', textDecoration: 'none', border: '1px solid rgba(204,34,34,0.45)', padding: '8px 18px', transition: 'all 0.25s', background: 'rgba(204,34,34,0.06)' }}
             onMouseEnter={e => { e.currentTarget.style.background = '#CC2222'; e.currentTarget.style.color = '#080808'; e.currentTarget.style.borderColor = '#CC2222'; }}
