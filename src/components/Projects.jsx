@@ -60,6 +60,17 @@ const projects = [
     github: '#',
     live: 'https://emmanuel-entonu.github.io/El-EN/',
   },
+  {
+    id: '06',
+    type: 'client',
+    featured: false,
+    title: 'Dassa',
+    desc: 'Nonprofit site for a Nigerian organisation equipping young people with digital safety and data protection skills.',
+    tags: ['WordPress', 'Custom HTML', 'JS'],
+    image: '/Dassa.png',
+    github: '#',
+    live: 'https://daasa.org',
+  },
 ];
 
 function TypeBadge({ type }) {

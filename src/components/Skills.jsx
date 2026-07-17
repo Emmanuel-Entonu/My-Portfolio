@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { SiReact, SiNextdotjs, SiHtml5, SiJavascript, SiMysql, SiBootstrap, SiTypescript, SiTailwindcss } from 'react-icons/si';
+import { SiReact, SiNextdotjs, SiHtml5, SiJavascript, SiMysql, SiBootstrap, SiTypescript, SiTailwindcss, SiWordpress } from 'react-icons/si';
 import { FaCss3Alt } from 'react-icons/fa';
 import DecryptedText from './DecryptedText';
 
@@ -14,6 +14,7 @@ const skills = [
   { name: 'SQL',         Icon: SiMysql,      glow: 'rgba(0,117,143,0.15)'   },
   { name: 'TypeScript',  Icon: SiTypescript,  glow: 'rgba(49,120,198,0.18)'  },
   { name: 'Tailwind',    Icon: SiTailwindcss, glow: 'rgba(56,189,248,0.18)'  },
+  { name: 'WordPress',   Icon: SiWordpress,   glow: 'rgba(33,117,155,0.18)'  },
 ];
 
 function Tile({ name, Icon, glow, delay, inView }) {
@@ -121,9 +122,9 @@ export default function Skills() {
 
               {/* Stats */}
               {[
-                { value: '9', label: 'Technologies' },
+                { value: '10', label: 'Technologies' },
                 { value: '5',  label: 'Years coding'  },
-                { value: '5',  label: 'Live projects'  },
+                { value: '6',  label: 'Live projects'  },
               ].map(({ value, label }, i) => (
                 <motion.div
                   key={label}
