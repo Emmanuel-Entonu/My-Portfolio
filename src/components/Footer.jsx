@@ -2,10 +2,10 @@ import { FaGithub, FaFacebook, FaInstagram, FaWhatsapp } from 'react-icons/fa';
 import DecryptedText from './DecryptedText';
 
 const socials = [
-  { Icon: FaGithub,    href: 'https://github.com/YOUR_GITHUB',    label: 'GitHub' },
-  { Icon: FaFacebook,  href: 'https://facebook.com/YOUR_PROFILE', label: 'Facebook' },
-  { Icon: FaInstagram, href: 'https://instagram.com/YOUR_HANDLE', label: 'Instagram' },
-  { Icon: FaWhatsapp,  href: 'https://wa.me/YOUR_NUMBER',         label: 'WhatsApp' },
+  { Icon: FaGithub,    href: 'https://github.com/Emmanuel-Entonu',                     label: 'GitHub' },
+  { Icon: FaFacebook,  href: 'https://web.facebook.com/profile.php?id=61582421490737', label: 'Facebook' },
+  { Icon: FaInstagram, href: 'https://www.instagram.com/entonu_emmanuel/',             label: 'Instagram' },
+  { Icon: FaWhatsapp,  href: 'https://wa.me/2349129312395',                            label: 'WhatsApp' },
 ];
 
 export default function Footer() {
@@ -18,7 +18,7 @@ export default function Footer() {
             <DecryptedText text="Emmanuel Entonu" animateOn="hover" speed={70} maxIterations={14} encryptedClassName="char-encrypted" className="char-revealed" />
           </span>
           <span style={{ fontSize: 12, color: 'rgba(232,224,204,0.18)', letterSpacing: '0.08em' }}>
-            © {new Date().getFullYear()} — All rights reserved
+            © {new Date().getFullYear()}. All rights reserved
           </span>
           <div style={{ display: 'flex', gap: 16 }}>
             {socials.map(({ Icon, href, label }) => (

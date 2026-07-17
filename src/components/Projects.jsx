@@ -25,14 +25,14 @@ const projects = [
     tags: ['Firebase', 'Bootstrap', 'Paystack'],
     image: '/GlowHavenLOunge.png',
     github: '#',
-    live: 'https://glowhavenbeautylounge.com.ng',
+    live: null,
   },
   {
     id: '03',
     type: 'client',
     featured: false,
     title: 'Green Ambiant Lodge',
-    desc: 'Full Airbnb-style listing site — photo gallery, video tour, Firebase reviews, and Google Maps.',
+    desc: 'Full Airbnb-style listing site with photo gallery, video tour, Firebase reviews, and Google Maps.',
     tags: ['Firebase', 'Google Maps', 'JavaScript'],
     image: '/Cozy Haven.png',
     github: '#',
@@ -144,7 +144,7 @@ function Card({ p, i, inView }) {
           fontSize: p.featured ? 88 : 64, fontWeight: 900, lineHeight: 1,
           WebkitTextStroke: '1.5px rgba(204,34,34,0.18)',
           color: 'transparent',
-          fontFamily: 'Syne, sans-serif',
+          fontFamily: 'Space Grotesk, sans-serif',
           marginLeft: '-0.18em',
         }}>E</span>
       </div>
@@ -221,7 +221,7 @@ export default function Projects() {
             >
               <DecryptedText text="Projects that speak" animateOn="view" sequential revealDirection="start" speed={110} maxIterations={25} encryptedClassName="char-encrypted" className="char-revealed" />
               <br />
-              <span className="gold-stroke" style={{ fontFamily: 'Syne, sans-serif' }}>for themselves.</span>
+              <span className="gold-stroke" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>for themselves.</span>
             </motion.h2>
             <motion.a href="https://github.com/Emmanuel-Entonu" target="_blank" rel="noopener noreferrer"
               initial={{ opacity: 0 }} animate={inView ? { opacity: 1 } : {}} transition={{ delay: 0.2 }}

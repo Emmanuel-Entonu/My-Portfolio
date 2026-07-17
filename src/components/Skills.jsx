@@ -73,7 +73,7 @@ function Tile({ name, Icon, glow, delay, inView }) {
           letterSpacing: '0.22em',
           textTransform: 'uppercase',
           color: 'rgba(232,224,204,0.3)',
-          fontFamily: 'Outfit, sans-serif',
+          fontFamily: 'Inter, sans-serif',
           position: 'relative', zIndex: 1,
         }}
       >
@@ -107,7 +107,7 @@ export default function Skills() {
               >
                 <DecryptedText text="What I" animateOn="view" sequential revealDirection="start" speed={110} maxIterations={25} encryptedClassName="char-encrypted" className="char-revealed" />
                 <br />
-                <span className="gold-stroke" style={{ fontFamily: 'Syne, sans-serif' }}>build with.</span>
+                <span className="gold-stroke" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>build with.</span>
               </motion.h2>
 
               <motion.p
@@ -116,7 +116,7 @@ export default function Skills() {
                 transition={{ delay: 0.15, duration: 0.6 }}
                 style={{ fontSize: 13, lineHeight: 1.85, color: 'rgba(232,224,204,0.35)', marginBottom: 40 }}
               >
-                My core stack — the technologies I reach for to ship fast, reliable, full-stack products from idea to deployment.
+                My core stack. The technologies I reach for to ship fast, reliable, full-stack products from idea to deployment.
               </motion.p>
 
               {/* Stats */}
@@ -133,7 +133,7 @@ export default function Skills() {
                   style={{ display: 'flex', alignItems: 'baseline', gap: 10, marginBottom: 16 }}
                 >
                   <span className="serif" style={{ fontSize: 36, fontWeight: 900, color: '#CC2222', lineHeight: 1 }}>{value}</span>
-                  <span style={{ fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(232,224,204,0.3)', fontFamily: 'Outfit, sans-serif' }}>{label}</span>
+                  <span style={{ fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(232,224,204,0.3)', fontFamily: 'Inter, sans-serif' }}>{label}</span>
                 </motion.div>
               ))}
             </div>

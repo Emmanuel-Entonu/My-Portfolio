@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Outfit:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -26,8 +26,10 @@ body::-webkit-scrollbar,
 body {
   background: #080808;
   color: #e8e0cc;
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
 }
 
 /* Grain texture overlay */
@@ -72,10 +74,10 @@ body::before {
   gap: 14px;
 }
 
-.serif { font-family: 'Syne', sans-serif; }
+.serif { font-family: 'Space Grotesk', 'Inter', sans-serif; }
 
 /* ── DecryptedText char states ── */
-.char-encrypted { color: rgba(204,34,34,0.55); font-family: 'Syne', monospace; }
+.char-encrypted { color: rgba(204,34,34,0.55); font-family: 'Space Grotesk', monospace; }
 .char-revealed  { color: inherit; }
 .gold-gradient {
   background: linear-gradient(135deg, #B91C1C 0%, #EF4444 50%, #B91C1C 100%);
@@ -86,7 +88,7 @@ body::before {
 .gold-stroke {
   -webkit-text-stroke: 1.5px #CC2222;
   color: transparent;
-  font-family: 'Syne', sans-serif;
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
 }
 
 .section-tag {

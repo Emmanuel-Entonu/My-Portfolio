@@ -7,10 +7,10 @@ import DecryptedText from './DecryptedText';
 const FORMSPREE = 'https://formspree.io/f/xzzrgnvr';
 
 const socials = [
-  { Icon: FaGithub,    href: 'https://github.com/YOUR_GITHUB',    label: 'GitHub' },
-  { Icon: FaFacebook,  href: 'https://facebook.com/YOUR_PROFILE', label: 'Facebook' },
-  { Icon: FaInstagram, href: 'https://instagram.com/YOUR_HANDLE', label: 'Instagram' },
-  { Icon: FaWhatsapp,  href: 'https://wa.me/YOUR_NUMBER',         label: 'WhatsApp' },
+  { Icon: FaGithub,    href: 'https://github.com/Emmanuel-Entonu',                     label: 'GitHub' },
+  { Icon: FaFacebook,  href: 'https://web.facebook.com/profile.php?id=61582421490737', label: 'Facebook' },
+  { Icon: FaInstagram, href: 'https://www.instagram.com/entonu_emmanuel/',             label: 'Instagram' },
+  { Icon: FaWhatsapp,  href: 'https://wa.me/2349129312395',                            label: 'WhatsApp' },
 ];
 
 const inputStyle = {
@@ -18,7 +18,7 @@ const inputStyle = {
   borderBottom: '1px solid rgba(204,34,34,0.18)',
   color: '#e8e0cc', fontSize: 14, padding: '14px 0',
   outline: 'none', transition: 'border-color 0.25s',
-  fontFamily: 'Outfit, sans-serif',
+  fontFamily: 'Inter, sans-serif',
 };
 
 const labelStyle = {
@@ -58,7 +58,7 @@ export default function Contact() {
                 <br /><span className="gold-gradient">something great.</span>
               </h2>
               <p style={{ fontSize: 14, lineHeight: 1.85, color: 'rgba(232,224,204,0.45)', marginBottom: 48, maxWidth: 340 }}>
-                Have a project in mind or just want to say hello? My inbox is always open — I'll get back to you as soon as possible.
+                Have a project in mind or just want to say hello? My inbox is always open. I'll get back to you as soon as possible.
               </p>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
@@ -85,7 +85,7 @@ export default function Contact() {
                     <RiCheckLine style={{ color: '#CC2222', fontSize: 22 }} />
                   </div>
                   <h3 className="serif" style={{ fontSize: 24, color: '#e8e0cc' }}>Message Sent</h3>
-                  <p style={{ fontSize: 13, color: 'rgba(232,224,204,0.4)' }}>Thank you — I'll be in touch soon.</p>
+                  <p style={{ fontSize: 13, color: 'rgba(232,224,204,0.4)' }}>Thank you. I'll be in touch soon.</p>
                   <button onClick={() => setStatus('idle')} style={{ marginTop: 16, background: 'none', border: 'none', cursor: 'pointer', fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(204,34,34,0.5)' }}>
                     Send another
                   </button>
