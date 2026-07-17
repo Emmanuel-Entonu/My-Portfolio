@@ -122,7 +122,7 @@ export default function Skills() {
               {/* Stats */}
               {[
                 { value: '9', label: 'Technologies' },
-                { value: '3+', label: 'Years coding'  },
+                { value: '5',  label: 'Years coding'  },
                 { value: '5',  label: 'Live projects'  },
               ].map(({ value, label }, i) => (
                 <motion.div

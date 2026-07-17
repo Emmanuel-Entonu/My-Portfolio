@@ -12,7 +12,7 @@ const socials = [
 
 const stats = [
   { value: '6+',   label: 'Projects' },
-  { value: '3+',   label: 'Years Coding' },
+  { value: '5',    label: 'Years Coding' },
   { value: '100%', label: 'Dedicated' },
 ];
 
