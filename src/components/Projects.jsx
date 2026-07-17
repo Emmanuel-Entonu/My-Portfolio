@@ -10,7 +10,7 @@ const projects = [
     type: 'client',
     featured: true,
     title: 'Place to Worship',
-    desc: 'A church directory platform based in Germany, helping users find and connect with places of worship near them.',
+    desc: 'Church directory for Germany. Users find services, congregations, and denominations near them.',
     tags: ['Next.js', 'PostgreSQL', 'Tailwind', 'TypeScript'],
     image: '/Place to worshhip.png',
     github: '#',
@@ -21,7 +21,7 @@ const projects = [
     type: 'client',
     featured: false,
     title: 'Glow Haven Beauty Lounge',
-    desc: 'E-commerce beauty store with Firebase inventory, Paystack payments, and a glassmorphic UI.',
+    desc: 'Beauty e-commerce store. Firebase-backed inventory, Paystack checkout, glassmorphic UI.',
     tags: ['Firebase', 'Bootstrap', 'Paystack'],
     image: '/GlowHavenLOunge.png',
     github: '#',
@@ -32,7 +32,7 @@ const projects = [
     type: 'client',
     featured: false,
     title: 'Green Ambiant Lodge',
-    desc: 'Full Airbnb-style listing site with photo gallery, video tour, Firebase reviews, and Google Maps.',
+    desc: 'Airbnb-style lodge listing. Photo gallery, video tour, Firebase reviews, Google Maps.',
     tags: ['Firebase', 'Google Maps', 'JavaScript'],
     image: '/Cozy Haven.png',
     github: '#',
@@ -44,7 +44,7 @@ const projects = [
     type: 'personal',
     featured: true,
     title: 'Weather Application',
-    desc: 'Interactive weather app with real-time data, location-based forecasts, and a fully responsive UI.',
+    desc: 'Live forecasts by location. Clean, fast, and responsive on any screen.',
     tags: ['JavaScript', 'CSS'],
     image: '/Modern Weather App - Opera 09_05_2025 01_13_02.png',
     github: '#',
@@ -55,7 +55,7 @@ const projects = [
     type: 'client',
     featured: false,
     title: 'EL & EN Estate Limited',
-    desc: 'Premium real estate website built for a registered property development company based in Abuja.',
+    desc: 'Real estate site for an Abuja-based property development company.',
     tags: ['Bootstrap 5', 'CSS', 'JavaScript'],
     image: '/El AND EN.png',
     github: '#',
@@ -66,7 +66,7 @@ const projects = [
     type: 'client',
     featured: false,
     title: 'Dassa',
-    desc: 'Nonprofit site for a Nigerian organisation equipping young people with digital safety and data protection skills.',
+    desc: 'Nonprofit site for a Nigerian org teaching young people digital safety and data protection.',
     tags: ['WordPress', 'Custom HTML', 'JS'],
     image: '/Dassa.png',
     github: '#',
@@ -237,9 +237,9 @@ export default function Projects() {
               initial={{ y: 20, opacity: 0 }} animate={inView ? { y: 0, opacity: 1 } : {}} transition={{ duration: 0.7 }}
               style={{ fontSize: 'clamp(32px,5vw,56px)', fontWeight: 900, lineHeight: 1.05, color: '#e8e0cc' }}
             >
-              <DecryptedText text="Projects that speak" animateOn="view" sequential revealDirection="start" speed={110} maxIterations={25} encryptedClassName="char-encrypted" className="char-revealed" />
+              <DecryptedText text="Things I've" animateOn="view" sequential revealDirection="start" speed={110} maxIterations={25} encryptedClassName="char-encrypted" className="char-revealed" />
               <br />
-              <span className="gold-stroke" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>for themselves.</span>
+              <span className="gold-stroke" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>built.</span>
             </motion.h2>
             <motion.a href="https://github.com/Emmanuel-Entonu" target="_blank" rel="noopener noreferrer"
               initial={{ opacity: 0 }} animate={inView ? { opacity: 1 } : {}} transition={{ delay: 0.2 }}

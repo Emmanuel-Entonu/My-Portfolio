@@ -54,11 +54,11 @@ export default function Contact() {
             {/* LEFT */}
             <motion.div initial={{ x: -30, opacity: 0 }} animate={inView ? { x: 0, opacity: 1 } : {}} transition={{ duration: 0.8, ease: [0.22,1,0.36,1] }}>
               <h2 className="serif" style={{ fontSize: 'clamp(32px,5vw,56px)', fontWeight: 900, lineHeight: 1.05, color: '#e8e0cc', marginBottom: 20 }}>
-                <DecryptedText text="Let's build" animateOn="view" sequential revealDirection="start" speed={110} maxIterations={25} encryptedClassName="char-encrypted" className="char-revealed" />
-                <br /><span className="gold-gradient">something great.</span>
+                <DecryptedText text="Let's" animateOn="view" sequential revealDirection="start" speed={110} maxIterations={25} encryptedClassName="char-encrypted" className="char-revealed" />
+                <br /><span className="gold-gradient">talk.</span>
               </h2>
-              <p style={{ fontSize: 14, lineHeight: 1.85, color: 'rgba(232,224,204,0.45)', marginBottom: 48, maxWidth: 340 }}>
-                Have a project in mind or just want to say hello? My inbox is always open. I'll get back to you as soon as possible.
+              <p style={{ fontSize: 14, lineHeight: 1.85, color: 'rgba(232,224,204,0.45)', marginBottom: 48, maxWidth: 360 }}>
+                Client work, a collab, or just a hello. My inbox is open, and I try to reply within a day.
               </p>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>

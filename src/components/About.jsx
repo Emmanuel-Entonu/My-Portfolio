@@ -34,14 +34,14 @@ export default function About() {
             {/* LEFT */}
             <motion.div variants={fadeL} initial="hidden" animate={inView ? 'show' : 'hidden'} style={{ overflow: 'hidden', minWidth: 0 }}>
               <h2 className="serif" style={{ fontSize: 'clamp(36px,5vw,60px)', fontWeight: 900, lineHeight: 1.05, color: '#e8e0cc', marginBottom: 28 }}>
-                <DecryptedText text="Crafting with" animateOn="view" sequential revealDirection="start" speed={110} maxIterations={25} encryptedClassName="char-encrypted" className="char-revealed" />
-                <br /><span className="gold-gradient">purpose.</span>
+                <DecryptedText text="Real work." animateOn="view" sequential revealDirection="start" speed={110} maxIterations={25} encryptedClassName="char-encrypted" className="char-revealed" />
+                <br /><span className="gold-gradient">Real clients.</span>
               </h2>
               <p style={{ fontSize: 15, lineHeight: 1.85, color: 'rgba(232,224,204,0.5)', marginBottom: 16 }}>
-                I'm a developer who believes great software is a blend of clean code and thoughtful design. Every project I take on is approached with precision and a relentless drive for quality.
+                I'm a full-stack developer based in Nigeria. Over the last few years I've shipped sites for churches, real estate firms, non-profits, and e-commerce brands across Nigeria and Germany.
               </p>
               <p style={{ fontSize: 15, lineHeight: 1.85, color: 'rgba(232,224,204,0.5)', marginBottom: 44 }}>
-                When I'm not building things, I'm exploring new technologies and pushing the boundaries of what's possible on the web.
+                I like code that's easy to read and interfaces that stay out of the way. I'd rather ship one thing that works well than three that kinda do.
               </p>
 
               {/* Social icons */}
@@ -73,8 +73,8 @@ export default function About() {
               <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
                 {[
                   { label: 'Focus',     value: 'Full-Stack Development' },
-                  { label: 'Stack',     value: 'React · Next.js · Node · SQL' },
-                  { label: 'Available', value: 'Open to new opportunities' },
+                  { label: 'Stack',     value: 'React · Next.js · Node · TypeScript · Tailwind' },
+                  { label: 'Available', value: 'Open to client work' },
                 ].map(item => (
                   <div key={item.label} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '14px 18px', border: '1px solid rgba(204,34,34,0.08)', borderLeft: '2px solid rgba(204,34,34,0.4)', flexWrap: 'wrap', gap: 8 }}>
                     <span style={{ fontSize: 11, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(232,224,204,0.3)' }}>{item.label}</span>

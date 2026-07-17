@@ -50,9 +50,9 @@ export default function Hero() {
               </div>
             </motion.div>
 
-            <motion.p variants={fadeUp} style={{ fontSize: 15, lineHeight: 1.8, color: 'rgba(232,224,204,0.45)', maxWidth: 400, marginBottom: 40 }}>
-              Building digital experiences that blend aesthetics with functionality.{' '}
-              <span style={{ color: '#CC2222' }}>Full-stack developer</span> crafting with intention.
+            <motion.p variants={fadeUp} style={{ fontSize: 15, lineHeight: 1.8, color: 'rgba(232,224,204,0.45)', maxWidth: 420, marginBottom: 40 }}>
+              I build websites and full-stack web apps for clients across Nigeria and beyond.{' '}
+              <span style={{ color: '#CC2222' }}>Full-stack developer.</span> Available for new work.
             </motion.p>
 
             <motion.div variants={fadeUp} style={{ display: 'flex', gap: 14, flexWrap: 'wrap', marginBottom: 44 }}>

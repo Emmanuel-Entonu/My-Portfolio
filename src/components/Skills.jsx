@@ -118,7 +118,7 @@ export default function Skills() {
                 transition={{ delay: 0.15, duration: 0.6 }}
                 style={{ fontSize: 13, lineHeight: 1.85, color: 'rgba(232,224,204,0.35)', marginBottom: 40 }}
               >
-                My core stack. The technologies I reach for to ship fast, reliable, full-stack products from idea to deployment.
+                My working stack. What I reach for when a project actually needs to ship.
               </motion.p>
 
               {/* Stats */}
