@@ -25,7 +25,7 @@ const projects = [
     tags: ['Firebase', 'Bootstrap', 'Paystack'],
     image: '/GlowHavenLOunge.png',
     github: '#',
-    live: null,
+    live: 'https://glowhavenbeautylounge.com.ng',
   },
   {
     id: '03',
