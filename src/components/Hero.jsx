@@ -107,18 +107,6 @@ export default function Hero() {
               <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '40%', zIndex: 2, background: 'linear-gradient(to top,rgba(8,8,8,0.7),transparent)' }} />
             </div>
 
-            {/* Status chip — sits below the frame, never overlaps */}
-            <motion.div
-              initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9, duration: 0.5 }}
-              style={{ marginTop: 16, display: 'inline-flex', alignItems: 'center', gap: 10, background: '#0f0f0f', border: '1px solid rgba(204,34,34,0.3)', padding: '8px 16px', boxShadow: '0 8px 32px rgba(0,0,0,0.5)' }}
-            >
-              <motion.div
-                animate={{ opacity: [1, 0.3, 1] }}
-                transition={{ repeat: Infinity, duration: 1.8, ease: 'easeInOut' }}
-                style={{ width: 7, height: 7, borderRadius: '50%', background: '#CC2222', flexShrink: 0 }}
-              />
-              <span style={{ fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(232,224,204,0.5)' }}>Open to work</span>
-            </motion.div>
           </motion.div>
         </div>
       </div>
