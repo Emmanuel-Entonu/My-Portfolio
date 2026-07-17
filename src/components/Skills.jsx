@@ -15,6 +15,7 @@ const skills = [
   { name: 'TypeScript',  Icon: SiTypescript,  glow: 'rgba(49,120,198,0.18)'  },
   { name: 'Tailwind',    Icon: SiTailwindcss, glow: 'rgba(56,189,248,0.18)'  },
   { name: 'WordPress',   Icon: SiWordpress,   glow: 'rgba(33,117,155,0.18)'  },
+  { name: 'React Native', Icon: SiReact,      glow: 'rgba(97,218,251,0.15)'  },
 ];
 
 function Tile({ name, Icon, glow, delay, inView }) {
@@ -122,7 +123,7 @@ export default function Skills() {
 
               {/* Stats */}
               {[
-                { value: '10', label: 'Technologies' },
+                { value: '11', label: 'Technologies' },
                 { value: '5',  label: 'Years coding'  },
                 { value: '6',  label: 'Live projects'  },
               ].map(({ value, label }, i) => (
