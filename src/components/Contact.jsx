@@ -1,17 +1,11 @@
-import { useRef, useState } from 'react';
-import { motion, useInView } from 'framer-motion';
-import { FaGithub, FaFacebook, FaInstagram, FaWhatsapp } from 'react-icons/fa';
-import { RiSendPlaneLine, RiCheckLine } from 'react-icons/ri';
+import { useState } from 'react';
+import { motion } from 'framer-motion';
+import { RiSendPlaneLine, RiCheckLine, RiArrowRightUpLine } from 'react-icons/ri';
+import Reveal from './Reveal';
 import DecryptedText from './DecryptedText';
+import { socials } from '../content';
 
 const FORMSPREE = 'https://formspree.io/f/xzzrgnvr';
-
-const socials = [
-  { Icon: FaGithub,    href: 'https://github.com/Emmanuel-Entonu',                     label: 'GitHub' },
-  { Icon: FaFacebook,  href: 'https://web.facebook.com/profile.php?id=61582421490737', label: 'Facebook' },
-  { Icon: FaInstagram, href: 'https://www.instagram.com/entonu_emmanuel/',             label: 'Instagram' },
-  { Icon: FaWhatsapp,  href: 'https://wa.me/2349129312395',                            label: 'WhatsApp' },
-];
 
 const inputStyle = {
   width: '100%', background: 'transparent', border: 'none',
@@ -27,9 +21,7 @@ const labelStyle = {
 };
 
 export default function Contact() {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: '-60px' });
-  const [form, setForm]   = useState({ name: '', email: '', message: '' });
+  const [form, setForm]     = useState({ name: '', email: '', message: '' });
   const [status, setStatus] = useState('idle');
 
   const onChange = e => setForm(f => ({ ...f, [e.target.name]: e.target.value }));
@@ -45,40 +37,42 @@ export default function Contact() {
   return (
     <>
       <div className="divider" />
-      <section id="contact" className="section-pad" ref={ref}>
+      <section id="contact" className="section-pad">
         <div className="wrap">
           <div className="section-tag"><span><DecryptedText text="Contact" animateOn="view" speed={75} maxIterations={18} encryptedClassName="char-encrypted" className="char-revealed" /></span></div>
 
           <div className="contact-grid">
-
             {/* LEFT */}
-            <motion.div initial={{ x: -30, opacity: 0 }} animate={inView ? { x: 0, opacity: 1 } : {}} transition={{ duration: 0.8, ease: [0.22,1,0.36,1] }}>
-              <h2 className="serif" style={{ fontSize: 'clamp(32px,5vw,56px)', fontWeight: 900, lineHeight: 1.05, color: '#e8e0cc', marginBottom: 20 }}>
+            <Reveal>
+              <h2 className="h2" style={{ fontSize: 'clamp(40px, 6.5vw, 80px)', lineHeight: 0.98 }}>
                 <DecryptedText text="Let's" animateOn="view" sequential revealDirection="start" speed={110} maxIterations={25} encryptedClassName="char-encrypted" className="char-revealed" />
                 <br /><span className="gold-gradient">talk.</span>
               </h2>
-              <p style={{ fontSize: 14, lineHeight: 1.85, color: 'rgba(232,224,204,0.45)', marginBottom: 48, maxWidth: 360 }}>
+              <p className="lead">
                 Client work, a collab, or just a hello. My inbox is open, and I try to reply within a day.
               </p>
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-                <span style={{ fontSize: 10, letterSpacing: '0.3em', textTransform: 'uppercase', color: 'rgba(232,224,204,0.2)', marginBottom: 14, display: 'block' }}>Find me on</span>
-                {socials.map(({ Icon, href, label }) => (
-                  <a key={label} href={href} target="_blank" rel="noopener noreferrer"
-                    style={{ display: 'flex', alignItems: 'center', gap: 16, padding: '14px 0', borderBottom: '1px solid rgba(204,34,34,0.06)', color: 'rgba(232,224,204,0.35)', textDecoration: 'none', fontSize: 13, transition: 'color 0.25s' }}
-                    onMouseEnter={e => e.currentTarget.style.color = '#CC2222'}
-                    onMouseLeave={e => e.currentTarget.style.color = 'rgba(232,224,204,0.35)'}
-                  >
-                    <Icon style={{ fontSize: 16 }} />
-                    <span style={{ letterSpacing: '0.06em' }}>{label}</span>
-                    <span style={{ marginLeft: 'auto', fontSize: 11, opacity: 0.3 }}>→</span>
-                  </a>
-                ))}
+              <div className="contact-list">
+                <small>Find me on</small>
+                <ul>
+                  {socials.map(({ Icon, href, label, handle }) => (
+                    <li key={label}>
+                      <a href={href} target="_blank" rel="noopener noreferrer" className="contact-row">
+                        <span className="contact-ico"><Icon /></span>
+                        <span className="contact-meta">
+                          <small>{label}</small>
+                          <span>{handle}</span>
+                        </span>
+                        <RiArrowRightUpLine className="contact-arrow" aria-hidden="true" />
+                      </a>
+                    </li>
+                  ))}
+                </ul>
               </div>
-            </motion.div>
+            </Reveal>
 
-            {/* RIGHT — Form */}
-            <motion.div initial={{ x: 30, opacity: 0 }} animate={inView ? { x: 0, opacity: 1 } : {}} transition={{ duration: 0.8, ease: [0.22,1,0.36,1], delay: 0.15 }}>
+            {/* RIGHT — Form (original design) */}
+            <motion.div initial={{ x: 30, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true, margin: '-60px' }} transition={{ duration: 0.8, ease: [0.22,1,0.36,1], delay: 0.15 }}>
               {status === 'success' ? (
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: 360, gap: 16, textAlign: 'center' }}>
                   <div style={{ width: 54, height: 54, border: '1px solid rgba(204,34,34,0.4)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -94,21 +88,21 @@ export default function Contact() {
                 <form onSubmit={onSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
                   <div className="form-name-row">
                     <div>
-                      <label style={labelStyle}>Name</label>
-                      <input name="name" type="text" placeholder="Your name" value={form.name} onChange={onChange} required style={inputStyle}
+                      <label htmlFor="c-name" style={labelStyle}>Name</label>
+                      <input id="c-name" name="name" type="text" placeholder="Your name" value={form.name} onChange={onChange} required style={inputStyle}
                         onFocus={e => e.target.style.borderBottomColor = '#CC2222'}
                         onBlur={e => e.target.style.borderBottomColor = 'rgba(204,34,34,0.18)'} />
                     </div>
                     <div>
-                      <label style={labelStyle}>Email</label>
-                      <input name="email" type="email" placeholder="your@email.com" value={form.email} onChange={onChange} required style={inputStyle}
+                      <label htmlFor="c-email" style={labelStyle}>Email</label>
+                      <input id="c-email" name="email" type="email" placeholder="your@email.com" value={form.email} onChange={onChange} required style={inputStyle}
                         onFocus={e => e.target.style.borderBottomColor = '#CC2222'}
                         onBlur={e => e.target.style.borderBottomColor = 'rgba(204,34,34,0.18)'} />
                     </div>
                   </div>
                   <div>
-                    <label style={labelStyle}>Message</label>
-                    <textarea name="message" placeholder="Tell me about your project..." value={form.message} onChange={onChange} required rows={6}
+                    <label htmlFor="c-message" style={labelStyle}>Message</label>
+                    <textarea id="c-message" name="message" placeholder="Tell me about your project..." value={form.message} onChange={onChange} required rows={6}
                       style={{ ...inputStyle, resize: 'none', display: 'block' }}
                       onFocus={e => e.target.style.borderBottomColor = '#CC2222'}
                       onBlur={e => e.target.style.borderBottomColor = 'rgba(204,34,34,0.18)'} />

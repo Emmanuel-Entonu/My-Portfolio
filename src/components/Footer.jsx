@@ -1,33 +1,37 @@
-import { FaGithub, FaFacebook, FaInstagram, FaWhatsapp } from 'react-icons/fa';
 import DecryptedText from './DecryptedText';
-
-const socials = [
-  { Icon: FaGithub,    href: 'https://github.com/Emmanuel-Entonu',                     label: 'GitHub' },
-  { Icon: FaFacebook,  href: 'https://web.facebook.com/profile.php?id=61582421490737', label: 'Facebook' },
-  { Icon: FaInstagram, href: 'https://www.instagram.com/entonu_emmanuel/',             label: 'Instagram' },
-  { Icon: FaWhatsapp,  href: 'https://wa.me/2349129312395',                            label: 'WhatsApp' },
-];
+import { navLinks, socials } from '../content';
 
 export default function Footer() {
   return (
     <>
       <div className="divider" />
-      <footer style={{ padding: '40px 0' }}>
-        <div className="wrap" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 20 }}>
-          <span className="serif" style={{ fontSize: 15, fontWeight: 700, letterSpacing: '0.08em', color: 'rgba(204,34,34,0.5)', textTransform: 'uppercase' }}>
-            <DecryptedText text="Emmanuel Entonu" animateOn="hover" speed={70} maxIterations={14} encryptedClassName="char-encrypted" className="char-revealed" />
-          </span>
-          <span style={{ fontSize: 12, color: 'rgba(232,224,204,0.18)', letterSpacing: '0.08em' }}>
-            © {new Date().getFullYear()}. All rights reserved
-          </span>
-          <div style={{ display: 'flex', gap: 16 }}>
-            {socials.map(({ Icon, href, label }) => (
-              <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}
-                style={{ color: 'rgba(232,224,204,0.2)', fontSize: 14, textDecoration: 'none', transition: 'color 0.25s' }}
-                onMouseEnter={e => e.currentTarget.style.color = '#CC2222'}
-                onMouseLeave={e => e.currentTarget.style.color = 'rgba(232,224,204,0.2)'}
-              ><Icon /></a>
-            ))}
+      <footer className="footer">
+        <div className="wrap">
+          <div className="footer-top">
+            <div>
+              <a href="#hero" className="logo">
+                <DecryptedText text="Emmanuel" animateOn="hover" speed={70} maxIterations={14} encryptedClassName="char-encrypted" className="char-revealed" />{' '}
+                <b><DecryptedText text="Entonu" animateOn="hover" speed={70} maxIterations={14} encryptedClassName="char-encrypted" className="char-revealed" /></b>
+              </a>
+              <p className="footer-tagline">Chief Software Engineer, Moneta Capital Investment Limited. Full-stack software developer based in Nigeria.</p>
+            </div>
+
+            <ul className="footer-nav">
+              {navLinks.map(l => <li key={l.id}><a href={`#${l.id}`}>{l.label}</a></li>)}
+              <li><a href="#contact">Contact</a></li>
+              <li><a href="/cv">CV</a></li>
+            </ul>
+
+            <div className="icon-links">
+              {socials.map(({ Icon, href, label }) => (
+                <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label} className="icon-link"><Icon /></a>
+              ))}
+            </div>
+          </div>
+
+          <div className="footer-bottom">
+            <span>© {new Date().getFullYear()} Emmanuel Entonu. All rights reserved</span>
+            <a href="#hero">Back to top ↑</a>
           </div>
         </div>
       </footer>

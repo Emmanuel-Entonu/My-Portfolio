@@ -1,116 +1,118 @@
-import { motion } from 'framer-motion';
-import { FaGithub, FaFacebook, FaInstagram, FaWhatsapp } from 'react-icons/fa';
-import { RiUser3Line } from 'react-icons/ri';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { PiCubeDuotone, PiCodeDuotone, PiGitBranchDuotone, PiGlobeDuotone } from 'react-icons/pi';
+import { RiArrowDownLine, RiFileTextLine } from 'react-icons/ri';
 import DecryptedText from './DecryptedText';
+import MoltenMetal from './MoltenMetal';
+import { socials } from '../content';
 
-const socials = [
-  { Icon: FaGithub,    href: 'https://github.com/Emmanuel-Entonu',                     label: 'GitHub' },
-  { Icon: FaFacebook,  href: 'https://web.facebook.com/profile.php?id=61582421490737', label: 'Facebook' },
-  { Icon: FaInstagram, href: 'https://www.instagram.com/entonu_emmanuel/',             label: 'Instagram' },
-  { Icon: FaWhatsapp,  href: 'https://wa.me/2349129312395',                            label: 'WhatsApp' },
+const ease = [0.22, 1, 0.36, 1];
+
+const floaters = [
+  { Icon: PiCubeDuotone,      className: 'floater f1', drift: 140, delay: 0.6 },
+  { Icon: PiGlobeDuotone,     className: 'floater f2', drift: 260, delay: 0.8 },
+  { Icon: PiCodeDuotone,      className: 'floater f3', drift: 200, delay: 0.7 },
+  { Icon: PiGitBranchDuotone, className: 'floater f4', drift: 320, delay: 0.9 },
 ];
 
 const stagger = { show: { transition: { staggerChildren: 0.1, delayChildren: 0.15 } } };
-const fadeUp  = { hidden: { y: 24, opacity: 0 }, show: { y: 0, opacity: 1, transition: { duration: 0.7, ease: [0.22,1,0.36,1] } } };
+const fadeUp  = { hidden: { y: 24, opacity: 0 }, show: { y: 0, opacity: 1, transition: { duration: 0.7, ease } } };
+const popIn   = { hidden: { scale: 0.85, opacity: 0 }, show: { scale: 1, opacity: 1, transition: { duration: 0.9, ease } } };
+
+/* Each icon bobs on its own (CSS) and drifts up at its own speed as you scroll. */
+function Floater({ Icon, className, drift, delay }) {
+  const { scrollY } = useScroll();
+  const y = useTransform(scrollY, [0, 900], [0, -drift]);
+  return (
+    <motion.div
+      className={className}
+      style={{ y }}
+      initial={{ opacity: 0, scale: 0.6 }}
+      animate={{ opacity: 0.75, scale: 1 }}
+      transition={{ duration: 1, ease, delay }}
+      aria-hidden="true"
+    >
+      <Icon />
+    </motion.div>
+  );
+}
+
+function Blank({ text }) {
+  return (
+    <span className="blank">
+      <DecryptedText text={text} animateOn="view" sequential revealDirection="start" speed={90} maxIterations={20} encryptedClassName="char-encrypted" className="char-revealed" />
+    </span>
+  );
+}
 
 export default function Hero() {
   return (
-    <section id="hero" className="hero-section" style={{ minHeight: '100svh', display: 'flex', position: 'relative', overflow: 'hidden' }}>
-
-
-      <div className="wrap hero-container">
-        <div className="hero-grid">
-
-          {/* TEXT */}
-          <motion.div variants={stagger} initial="hidden" animate="show" style={{ display: 'flex', flexDirection: 'column' }}>
-            <motion.div variants={fadeUp}>
-              <div className="serif hero-name" style={{ color: '#e8e0cc', marginBottom: 6 }}>
-                <DecryptedText
-                  text="EMMANUEL"
-                  animateOn="view"
-                  sequential
-                  revealDirection="start"
-                  speed={140}
-                  maxIterations={30}
-                  encryptedClassName="char-encrypted"
-                  className="char-revealed"
-                />
-              </div>
-              <div className="serif gold-stroke hero-name" style={{ marginBottom: 36 }}>
-                <DecryptedText
-                  text="ENTONU"
-                  animateOn="view"
-                  sequential
-                  revealDirection="start"
-                  speed={140}
-                  maxIterations={30}
-                  encryptedClassName="char-encrypted"
-                  className="char-revealed"
-                />
-              </div>
-            </motion.div>
-
-            <motion.p variants={fadeUp} style={{ fontSize: 15, lineHeight: 1.8, color: 'rgba(232,224,204,0.45)', maxWidth: 420, marginBottom: 40 }}>
-              I build websites and full-stack web apps for clients across Nigeria and beyond.{' '}
-              <span style={{ color: '#CC2222' }}>Full-stack developer.</span> Available for new work.
-            </motion.p>
-
-            <motion.div variants={fadeUp} style={{ display: 'flex', gap: 14, flexWrap: 'wrap', marginBottom: 44 }}>
-              <a href="#projects"
-                style={{ background: '#CC2222', color: '#080808', padding: '13px 30px', fontSize: 12, fontWeight: 600, letterSpacing: '0.18em', textTransform: 'uppercase', textDecoration: 'none', transition: 'background 0.25s' }}
-                onMouseEnter={e => e.currentTarget.style.background = '#EF4444'}
-                onMouseLeave={e => e.currentTarget.style.background = '#CC2222'}
-              >View Work</a>
-              <a href="#contact"
-                style={{ border: '1px solid rgba(204,34,34,0.4)', color: '#CC2222', padding: '13px 30px', fontSize: 12, fontWeight: 600, letterSpacing: '0.18em', textTransform: 'uppercase', textDecoration: 'none', transition: 'all 0.25s' }}
-                onMouseEnter={e => { e.currentTarget.style.borderColor = '#CC2222'; e.currentTarget.style.background = 'rgba(204,34,34,0.05)'; }}
-                onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(204,34,34,0.4)'; e.currentTarget.style.background = 'transparent'; }}
-              >Get In Touch</a>
-            </motion.div>
-
-            {/* Socials — always visible */}
-            <motion.div variants={fadeUp} style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
-              <span style={{ fontSize: 10, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'rgba(232,224,204,0.2)', marginRight: 4 }}>Find me</span>
-              {socials.map(({ Icon, href, label }) => (
-                <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}
-                  style={{ color: 'rgba(232,224,204,0.3)', fontSize: 18, textDecoration: 'none', transition: 'color 0.25s, transform 0.25s' }}
-                  onMouseEnter={e => { e.currentTarget.style.color = '#CC2222'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
-                  onMouseLeave={e => { e.currentTarget.style.color = 'rgba(232,224,204,0.3)'; e.currentTarget.style.transform = 'translateY(0)'; }}
-                ><Icon /></a>
-              ))}
-            </motion.div>
-          </motion.div>
-
-          {/* PHOTO — hidden on mobile via CSS class */}
-          <motion.div
-            className="hero-photo"
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, ease: [0.22,1,0.36,1], delay: 0.3 }}
-            style={{ position: 'relative', flexShrink: 0 }}
-          >
-            <div className="hero-photo-deco">
-              <div style={{ position: 'absolute', top: -12, right: -12, width: '100%', height: '100%', border: '1px solid rgba(204,34,34,0.2)', pointerEvents: 'none' }} />
-              <div style={{ position: 'absolute', bottom: -12, left: -12, width: '100%', height: '100%', border: '1px solid rgba(204,34,34,0.1)', pointerEvents: 'none' }} />
-            </div>
-
-            <div className="hero-photo-frame" style={{ overflow: 'hidden', position: 'relative', border: '1px solid rgba(204,34,34,0.25)', boxShadow: '0 0 60px rgba(204,34,34,0.08),0 30px 80px rgba(0,0,0,0.6)', background: '#0f0f0f' }}>
-              {/* Fallback — sits at z-index 0, behind the image */}
-              <div style={{ position: 'absolute', inset: 0, zIndex: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 12, color: 'rgba(204,34,34,0.2)' }}>
-                <RiUser3Line style={{ fontSize: 52 }} />
-                <span style={{ fontSize: 10, letterSpacing: '0.3em', textTransform: 'uppercase', color: 'rgba(204,34,34,0.25)' }}>profile.jpg</span>
-              </div>
-              {/* Image — z-index 1, covers the fallback */}
-              <img src="/profile-photo.jpg" alt="Profile" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 45%', display: 'block', position: 'relative', zIndex: 1 }}
-                onError={e => { e.currentTarget.style.display = 'none'; }} />
-              {/* Gradient overlay — z-index 2, sits above image */}
-              <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '40%', zIndex: 2, background: 'linear-gradient(to top,rgba(8,8,8,0.7),transparent)' }} />
-            </div>
-
-          </motion.div>
-        </div>
+    <section id="hero" className="hero">
+      {/* Molten metal background, behind the icons and content */}
+      <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
+        <MoltenMetal
+          color1="#350e0e"
+          color2="#EF4444"
+          color3="#FFFFFF"
+          speed={0.35}
+          scale={4}
+          detail={3}
+          glow={1.6}
+          coreSize={0.1}
+          swirl={1}
+          fold={-0.2}
+          blackPoint={0.05}
+          brightness={1.3}
+          colorMode="molten"
+          grain={true}
+          grainIntensity={0.05}
+          mouseInteraction={true}
+          mouseStrength={0.3}
+          opacity={1.0}
+        />
       </div>
 
+      <div className="floaters">
+        {floaters.map(f => <Floater key={f.className} {...f} />)}
+      </div>
+
+      <motion.div className="wrap hero-inner" variants={stagger} initial="hidden" animate="show">
+        <motion.div className="hero-photo" variants={popIn}>
+          <img src="/profile-photo.jpg" alt="Emmanuel Entonu" width="176" height="176"
+            onError={e => { e.currentTarget.style.visibility = 'hidden'; }} />
+        </motion.div>
+
+        <motion.div className="section-tag is-center hero-name" variants={fadeUp}>
+          <span>
+            <DecryptedText text="Emmanuel Entonu" animateOn="view" sequential revealDirection="start" speed={80} maxIterations={20} encryptedClassName="char-encrypted" className="char-revealed" />
+          </span>
+        </motion.div>
+
+        <motion.h1 className="hero-title" variants={fadeUp}>
+          I'm a full-stack software developer based in <span className="nowrap"><Blank text="Nigeria" />,</span> specializing in <span className="nowrap"><Blank text="React & Next.js" />.</span>
+        </motion.h1>
+
+        <motion.p className="hero-sub" variants={fadeUp}>
+          Currently Chief Software Engineer at Moneta Capital Investment Limited. I build trading platforms, mobile apps, and web products, and I'm open to freelance work.
+        </motion.p>
+
+        <motion.div className="hero-actions" variants={fadeUp}>
+          <a href="#projects" className="btn btn-red">View Work</a>
+          <a href="#contact" className="btn btn-outline">Get In Touch</a>
+          <a href="/cv" className="btn btn-outline"><RiFileTextLine aria-hidden="true" /> View CV</a>
+        </motion.div>
+
+        <motion.div className="hero-socials" variants={fadeUp}>
+          <small>Find me</small>
+          {socials.map(({ Icon, href, label }) => (
+            <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}><Icon /></a>
+          ))}
+        </motion.div>
+      </motion.div>
+
+      <a href="#about" className="scroll-cue">
+        Scroll down
+        <RiArrowDownLine aria-hidden="true" />
+      </a>
     </section>
   );
 }

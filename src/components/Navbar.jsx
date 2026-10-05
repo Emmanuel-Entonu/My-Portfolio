@@ -2,80 +2,127 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { RiMenu4Line, RiCloseLine } from 'react-icons/ri';
 import DecryptedText from './DecryptedText';
+import { navLinks, socials } from '../content';
 
-const links = ['About', 'Skills', 'Projects', 'Contact'];
+const spyIds = ['hero', ...navLinks.map(l => l.id), 'contact'];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen]         = useState(false);
+  const [active, setActive]     = useState('');
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', fn);
+    fn();
+    window.addEventListener('scroll', fn, { passive: true });
     return () => window.removeEventListener('scroll', fn);
   }, []);
 
+  // Scroll-spy: whichever section crosses the middle of the viewport is "active"
+  useEffect(() => {
+    const io = new IntersectionObserver(
+      entries => entries.forEach(e => { if (e.isIntersecting) setActive(e.target.id); }),
+      { rootMargin: '-45% 0px -50% 0px' },
+    );
+    spyIds.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) io.observe(el);
+    });
+    return () => io.disconnect();
+  }, []);
+
+  // Lock page scroll + close on Escape while the mobile menu is open
+  useEffect(() => {
+    if (!open) return;
+    const onKey = e => { if (e.key === 'Escape') setOpen(false); };
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', onKey);
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', onKey);
+    };
+  }, [open]);
+
+  // Mobile links: release the scroll lock first, then scroll, so the jump isn't swallowed
+  const goTo = id => e => {
+    e.preventDefault();
+    document.body.style.overflow = '';
+    setOpen(false);
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
-    <motion.header
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5, ease: 'easeOut' }}
-      style={{
-        position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
-        background: scrolled ? 'rgba(8,8,8,0.92)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(12px)' : 'none',
-        borderBottom: scrolled ? '1px solid rgba(204,34,34,0.08)' : 'none',
-        transition: 'background 0.4s ease, backdrop-filter 0.4s ease, border-color 0.4s ease',
-      }}
-    >
-      <div className="nav-inner">
-        <a href="#" className="serif" style={{ fontSize: 17, fontWeight: 700, letterSpacing: '0.08em', color: '#CC2222', textDecoration: 'none', textTransform: 'uppercase' }}>
-          <DecryptedText text="My Portfolio" animateOn="hover" speed={70} maxIterations={14} encryptedClassName="char-encrypted" className="char-revealed" />
-        </a>
+    <>
+      <motion.header
+        className={`nav${scrolled ? ' is-scrolled' : ''}`}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, ease: 'easeOut' }}
+      >
+        <div className="wrap nav-inner">
+          <a href="#hero" className="logo" aria-label="Emmanuel Entonu, back to top">
+            <DecryptedText text="Emmanuel" animateOn="hover" speed={70} maxIterations={14} encryptedClassName="char-encrypted" className="char-revealed" />{' '}
+            <b><DecryptedText text="Entonu" animateOn="hover" speed={70} maxIterations={14} encryptedClassName="char-encrypted" className="char-revealed" /></b>
+          </a>
 
-        {/* Desktop links */}
-        <nav className="nav-links">
-          {links.map(l => (
-            <a key={l} href={`#${l.toLowerCase()}`}
-              style={{ fontSize: 12, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(232,224,204,0.5)', textDecoration: 'none', transition: 'color 0.25s' }}
-              onMouseEnter={e => e.target.style.color = '#CC2222'}
-              onMouseLeave={e => e.target.style.color = 'rgba(232,224,204,0.5)'}
-            >{l}</a>
-          ))}
-        </nav>
+          <nav className="nav-menu" aria-label="Primary">
+            <ul className="nav-links">
+              {navLinks.map(l => (
+                <li key={l.id}>
+                  <a href={`#${l.id}`} className={`nav-link${active === l.id ? ' is-active' : ''}`}>{l.label}</a>
+                </li>
+              ))}
+              <li><a href="/cv" className="nav-link">CV</a></li>
+            </ul>
+            <a href="#contact" className="btn btn-outline btn-sm">Get in touch</a>
+          </nav>
 
-        {/* Mobile toggle */}
-        <button className="nav-hamburger" onClick={() => setOpen(o => !o)}
-          style={{ background: 'none', border: 'none', color: '#CC2222', fontSize: 22, cursor: 'pointer', padding: 4 }}>
-          {open ? <RiCloseLine /> : <RiMenu4Line />}
-        </button>
-      </div>
+          <button className="nav-toggle" aria-label="Open menu" aria-expanded={open} onClick={() => setOpen(true)}>
+            <RiMenu4Line />
+          </button>
+        </div>
+      </motion.header>
 
-      {/* Mobile menu */}
+      {/* Rendered outside <header>: its backdrop-filter would trap position:fixed children */}
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3 }}
-            style={{ background: 'rgba(8,8,8,0.97)', borderTop: '1px solid rgba(204,34,34,0.1)', overflow: 'hidden' }}
+            className="mobile-menu"
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            onClick={() => setOpen(false)}
           >
-            <nav style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 28, padding: '36px 0' }}>
-              {links.map(l => (
-                <a key={l} href={`#${l.toLowerCase()}`}
-                  onClick={e => {
-                    e.preventDefault();
-                    setOpen(false);
-                    setTimeout(() => {
-                      document.getElementById(l.toLowerCase())?.scrollIntoView({ behavior: 'smooth' });
-                    }, 300);
-                  }}
-                  style={{ fontSize: 13, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'rgba(232,224,204,0.55)', textDecoration: 'none' }}
-                >{l}</a>
-              ))}
-            </nav>
+            <motion.nav
+              className="mobile-panel"
+              aria-label="Mobile"
+              initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }}
+              transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+              onClick={e => e.stopPropagation()}
+            >
+              <div className="mobile-panel-head">
+                <button className="nav-toggle" aria-label="Close menu" onClick={() => setOpen(false)}>
+                  <RiCloseLine />
+                </button>
+              </div>
+
+              <ul className="mobile-links">
+                {navLinks.map(l => (
+                  <li key={l.id}><a href={`#${l.id}`} onClick={goTo(l.id)}>{l.label}</a></li>
+                ))}
+                <li><a href="/cv">CV</a></li>
+              </ul>
+
+              <a href="#contact" className="btn btn-red" onClick={goTo('contact')}>Get in touch</a>
+
+              <div className="icon-links">
+                {socials.map(({ Icon, href, label }) => (
+                  <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label} className="icon-link"><Icon /></a>
+                ))}
+              </div>
+            </motion.nav>
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.header>
+    </>
   );
 }
