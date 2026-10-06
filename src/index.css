@@ -794,6 +794,9 @@ body {
   text-transform: uppercase;
   color: rgba(232, 224, 204, 0.35);
 }
+.project-status.is-confidential { color: rgba(255, 255, 255, 0.6); }
+.project-status.is-confidential::before { display: none; }
+.project-status svg { font-size: 13px; color: var(--red-bright); }
 .project-status::before {
   content: '';
   width: 6px;

@@ -5,8 +5,8 @@ import { RiCloseLine, RiExternalLinkLine, RiArrowRightUpLine } from 'react-icons
 
 const ease = [0.22, 1, 0.36, 1];
 
-/* Full-screen "developer notes" write-up for a project: what was done, results with
-   screenshots, and every page built. Esc or the close button to leave. */
+/* Full-screen "developer notes" write-up for a project: what was done, then whichever of
+   results, screenshots and pages built the notes include. Esc or the close button to leave. */
 export default function DevNotes({ notes, onClose }) {
   const closeRef = useRef(null);
   const onCloseRef = useRef(onClose);
@@ -25,8 +25,17 @@ export default function DevNotes({ notes, onClose }) {
     };
   }, []);
 
-  const { results } = notes;
-  const pageCount = notes.pageGroups.reduce((n, g) => n + g.pages.length, 0);
+  const { results, figures, live } = notes;
+  const pageCount = notes.pageGroups?.reduce((n, g) => n + g.pages.length, 0) ?? 0;
+
+  const figure = f => (
+    <figure key={f.src}>
+      <a href={f.src} target="_blank" rel="noopener noreferrer" aria-label={`Open full size: ${f.caption}`}>
+        <img src={f.src} alt={f.caption} loading="lazy" />
+      </a>
+      <figcaption>{f.caption}</figcaption>
+    </figure>
+  );
 
   return createPortal(
     <motion.div
@@ -42,9 +51,11 @@ export default function DevNotes({ notes, onClose }) {
           <small>Developer notes</small>
           <strong>{notes.title}</strong>
         </div>
-        <a href={notes.live.href} target="_blank" rel="noopener noreferrer" className="btn btn-outline btn-sm notes-live">
-          {notes.live.label} <RiExternalLinkLine aria-hidden="true" />
-        </a>
+        {live && (
+          <a href={live.href} target="_blank" rel="noopener noreferrer" className="btn btn-outline btn-sm notes-live">
+            {live.label} <RiExternalLinkLine aria-hidden="true" />
+          </a>
+        )}
         <button ref={closeRef} className="gallery-btn" onClick={onClose} aria-label="Close developer notes"><RiCloseLine /></button>
       </header>
 
@@ -65,58 +76,67 @@ export default function DevNotes({ notes, onClose }) {
           </section>
         ))}
 
-        <section className="notes-section">
-          <h3>{results.title}</h3>
-          <p className="notes-period">{results.period}</p>
-          <div className="notes-stats">
-            {results.stats.map(st => (
-              <div key={st.label}>
-                <strong>{st.value}</strong>
-                <span>{st.label}</span>
-              </div>
-            ))}
-          </div>
-          <ul className="notes-list">
-            {results.points.map(pt => <li key={pt.slice(0, 40)}>{pt}</li>)}
-          </ul>
-          <div className="notes-figures">
-            {results.figures.map(f => (
-              <figure key={f.src}>
-                <a href={f.src} target="_blank" rel="noopener noreferrer" aria-label={`Open full size: ${f.caption}`}>
-                  <img src={f.src} alt={f.caption} loading="lazy" />
-                </a>
-                <figcaption>{f.caption}</figcaption>
-              </figure>
-            ))}
-          </div>
-        </section>
+        {results && (
+          <section className="notes-section">
+            <h3>{results.title}</h3>
+            <p className="notes-period">{results.period}</p>
+            <div className="notes-stats">
+              {results.stats.map(st => (
+                <div key={st.label}>
+                  <strong>{st.value}</strong>
+                  <span>{st.label}</span>
+                </div>
+              ))}
+            </div>
+            <ul className="notes-list">
+              {results.points.map(pt => <li key={pt.slice(0, 40)}>{pt}</li>)}
+            </ul>
+            <div className="notes-figures">
+              {results.figures.map(figure)}
+            </div>
+          </section>
+        )}
 
-        <section className="notes-section">
-          <h3>{notes.pagesTitle}</h3>
-          <p className="notes-period">All {pageCount} pages are live and in the sitemap submitted to Google.</p>
-          <div className="notes-pages">
-            {notes.pageGroups.map(g => (
-              <div key={g.group}>
-                <h4>{g.group}</h4>
-                <ul>
-                  {g.pages.map(pg => (
-                    <li key={pg.href}>
-                      <a href={pg.href} target="_blank" rel="noopener noreferrer">
-                        {pg.label} <RiArrowRightUpLine aria-hidden="true" />
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </section>
+        {figures && (
+          <section className="notes-section">
+            <h3>{figures.title}</h3>
+            {figures.note && <p className="notes-period">{figures.note}</p>}
+            <div className="notes-figures">
+              {figures.items.map(figure)}
+            </div>
+          </section>
+        )}
 
-        <div className="notes-foot">
-          <a href={notes.live.href} target="_blank" rel="noopener noreferrer" className="btn btn-red">
-            {notes.live.label} <RiExternalLinkLine aria-hidden="true" />
-          </a>
-        </div>
+        {notes.pageGroups && (
+          <section className="notes-section">
+            <h3>{notes.pagesTitle}</h3>
+            <p className="notes-period">All {pageCount} pages are live and in the sitemap submitted to Google.</p>
+            <div className="notes-pages">
+              {notes.pageGroups.map(g => (
+                <div key={g.group}>
+                  <h4>{g.group}</h4>
+                  <ul>
+                    {g.pages.map(pg => (
+                      <li key={pg.href}>
+                        <a href={pg.href} target="_blank" rel="noopener noreferrer">
+                          {pg.label} <RiArrowRightUpLine aria-hidden="true" />
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {live && (
+          <div className="notes-foot">
+            <a href={live.href} target="_blank" rel="noopener noreferrer" className="btn btn-red">
+              {live.label} <RiExternalLinkLine aria-hidden="true" />
+            </a>
+          </div>
+        )}
       </motion.div>
     </motion.div>,
     document.body,

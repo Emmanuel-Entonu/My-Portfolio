@@ -2,6 +2,7 @@ import { FaGithub, FaFacebook, FaInstagram, FaWhatsapp, FaCss3Alt } from 'react-
 import { SiReact, SiNextdotjs, SiHtml5, SiJavascript, SiMysql, SiBootstrap, SiTypescript, SiTailwindcss, SiWordpress, SiKotlin } from 'react-icons/si';
 import { TbBrandReactNative } from 'react-icons/tb';
 import { wymnetNotes } from './notes/wymnet.js';
+import { eticoPartnerNotes } from './notes/etico-partner.js';
 
 export const socials = [
   { Icon: FaGithub,    href: 'https://github.com/Emmanuel-Entonu',                     label: 'GitHub',    handle: 'Emmanuel-Entonu' },
@@ -60,13 +61,14 @@ const gallery = (folder, captions) =>
 // Card heights follow their content (masonry), so no row spans are needed.
 export const projects = [
   {
-    title: 'Place to Worship',
+    title: 'ETICO Stock Trading Platform',
+    subtitle: 'Online brokerage for the Nigerian Exchange · for Moneta Capital',
     type: 'client',
     size: 'wide',
-    desc: 'Church directory for Germany. Users find services, congregations, and denominations near them.',
-    tags: ['Next.js', 'PostgreSQL', 'Tailwind', 'TypeScript'],
-    image: '/Place to worshhip.png',
-    live: 'https://www.placetoworship.org',
+    desc: 'Stock trading platform for ethically screened stocks on the Nigerian Exchange (NGX). Investors open an account with BVN and KYC checks, fund a wallet, track live market data, and place real buy and sell orders executed through a licensed broker. Also runs IPO offers and a partner dashboard for reviewing new accounts.',
+    tags: ['Next.js', 'TypeScript', 'Supabase', 'Tailwind', 'Zustand'],
+    image: '/ETICO-web.jpg',
+    live: 'https://www.etico.ng',
   },
   {
     title: 'ETICO Trading App',
@@ -112,14 +114,74 @@ export const projects = [
     live: 'https://cctib-canadian-college-of-technology-website.xrenegade1813.workers.dev',
   },
   {
-    title: 'ETICO Stock Trading Platform',
-    subtitle: 'Online brokerage for the Nigerian Exchange · for Moneta Capital',
+    title: 'Place to Worship',
     type: 'client',
     size: 'wide',
-    desc: 'Stock trading platform for ethically screened stocks on the Nigerian Exchange (NGX). Investors open an account with BVN and KYC checks, fund a wallet, track live market data, and place real buy and sell orders executed through a licensed broker. Also runs IPO offers and a partner dashboard for reviewing new accounts.',
-    tags: ['Next.js', 'TypeScript', 'Supabase', 'Tailwind', 'Zustand'],
-    image: '/ETICO-web.jpg',
-    live: 'https://www.etico.ng',
+    desc: 'Church directory for Germany. Users find services, congregations, and denominations near them.',
+    tags: ['Next.js', 'PostgreSQL', 'Tailwind', 'TypeScript'],
+    image: '/Place to worshhip.png',
+    live: 'https://www.placetoworship.org',
+  },
+  {
+    title: 'CCTIB Admin Dashboard',
+    subtitle: 'College staff dashboard · Confidential',
+    type: 'client',
+    confidential: true,
+    desc: "The college's private back office: programs and categories, intakes, applications, students, instructors, enquiries, corporate training requests, news, announcements, media, subscribers, staff accounts and site settings.",
+    tags: ['Next.js', 'TypeScript', 'Supabase', 'Tailwind', 'Cloudflare'],
+    live: null,
+    image: '/gallery/cctib-admin/02.jpg',  // the programs list makes a better cover than the overview
+    gallery: gallery('cctib-admin', [
+      'Overview: unread inbox counts, recent applications, upcoming intakes and activity',
+      'Programs with duration, tuition, next intake and visibility',
+      'Editing a program: duration, tuition, level, delivery, category and cover image',
+      'Categories that drive the filters on the public Programs page',
+      'Intakes: start dates and application deadlines shown on the site',
+      'Applications inbox with search, status and program filters and CSV export',
+      'News and articles published to the website',
+      'Announcements that rotate in the bar above the site header',
+      'Page content: editing the wording and photos on every main page',
+      'Staff accounts with administrator and editor roles',
+      'Site settings: contact details and social links used across the site',
+    ]),
+  },
+  {
+    title: 'ETICO Trading Dashboard',
+    subtitle: 'Investor web app · etico.ng',
+    type: 'client',
+    desc: 'The signed-in side of ETICO on the web, where investors manage their money: portfolio and wealth overview, live market data, stock pages with charts, buying and selling, order history, wallet funding, allocation, IPO offers and account settings.',
+    tags: ['Next.js', 'TypeScript', 'Supabase', 'Zustand', 'Tailwind'],
+    live: 'https://www.etico.ng/app',
+    // Screenshots in /public/gallery/etico-dashboard/ (personal details removed)
+    gallery: gallery('etico-dashboard', [
+      'Portfolio home: total wealth, IPO banner, watchlist and market pulse',
+      "Screened NGX market with today's top movers",
+      'Full market list with live prices, change and volume',
+      'Stock page with price chart and the order ticket',
+      'Order history with fills and statuses',
+      'Portfolio allocation across holdings',
+      'Wallet and buying power',
+      'Funding the account by bank transfer',
+      'Wallet activity: deposits and moves to the trading wallet',
+      'IPO events open to investors',
+    ]),
+  },
+  {
+    title: 'ETICO Partner Dashboard',
+    subtitle: 'Brokerage back office · Confidential',
+    type: 'client',
+    confidential: true,
+    desc: "The partner brokerage's private dashboard for ETICO: reviewing and approving new investor accounts after KYC, running IPO offers, and handling withdrawal requests.",
+    tags: ['Next.js', 'TypeScript', 'Supabase', 'Tailwind'],
+    live: null,
+    notes: eticoPartnerNotes,
+    // Screenshots in /public/gallery/etico-partner/ (personal details removed)
+    gallery: gallery('etico-partner', [
+      "KYC review queue and a customer's verification details",
+      'Approved account: next of kin, broker account and CSCS / CHN sync',
+      'Withdrawal requests with totals and payout details',
+      'Withdrawal detail with balances and the payout decision',
+    ]),
   },
   {
     title: 'Dassa',

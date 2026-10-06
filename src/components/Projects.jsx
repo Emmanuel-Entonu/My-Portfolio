@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import { motion, AnimatePresence, useInView } from 'framer-motion';
-import { RiExternalLinkLine, RiImageLine, RiSmartphoneLine, RiAppleFill, RiFileList3Line } from 'react-icons/ri';
+import { RiExternalLinkLine, RiImageLine, RiSmartphoneLine, RiAppleFill, RiFileList3Line, RiLockLine } from 'react-icons/ri';
 import Reveal from './Reveal';
 import DecryptedText from './DecryptedText';
 import Gallery from './Gallery';
@@ -17,6 +17,15 @@ const DISCONTINUED_NOTICE = {
   title: 'Discontinued by the client.',
   text: 'This site is no longer live, so these screenshots are kept here to show the work.',
 };
+
+// Shown across the top of the gallery for private dashboards
+const CONFIDENTIAL_NOTICE = {
+  title: 'Confidential.',
+  text: "This is a private dashboard, so it's shown here as screenshots only, with personal details removed.",
+};
+
+// Cards whose only visuals are a gallery stay hidden until screenshots are added
+const shown = projects.filter(p => p.image || p.screens || (p.gallery && p.gallery.length > 0));
 
 const CYCLE_MS = 1800;  // time each screen stays up in the card's phones
 
@@ -95,12 +104,12 @@ function Card({ p, i, onGallery, onNotes }) {
 
   return (
     <Reveal delay={(i % 3) * 0.08} className={p.size ? `is-${p.size}` : undefined} style={span ? { gridRowEnd: `span ${span}` } : undefined}>
-      <article ref={ref} className={`project${p.discontinued ? ' is-discontinued' : ''}`}>
+      <article ref={ref} className={`project${p.discontinued ? ' is-discontinued' : ''}${p.confidential ? ' is-confidential' : ''}`}>
         <div className={`project-media${isApp ? ' is-phones' : ''}`}>
           {isApp ? (
             <PhoneShowcase screens={p.screens} launch={p.launch} title={p.title} />
           ) : (
-            <img src={p.image} alt={`${p.title} screenshot`} loading="lazy"
+            <img src={p.image || p.gallery?.[0]?.src} alt={`${p.title} screenshot`} loading="lazy"
               onError={e => { e.currentTarget.style.display = 'none'; }} />
           )}
           <span className={`badge ${isClient ? 'is-client' : 'is-personal'}`}>{isClient ? 'Client' : 'Personal'}</span>
@@ -130,12 +139,22 @@ function Card({ p, i, onGallery, onNotes }) {
                   </button>
                 )}
               </>
-            ) : p.gallery ? (
-              <button type="button" className="project-live" onClick={() => onGallery({ title: p.title, images: p.gallery, label: 'Gallery · Discontinued by client', notice: DISCONTINUED_NOTICE })} aria-haspopup="dialog">
-                <RiImageLine aria-hidden="true" /> Gallery
-              </button>
             ) : (
               <>
+                {p.gallery?.length > 0 && (
+                  <button
+                    type="button"
+                    className="project-live"
+                    onClick={() => onGallery(p.confidential
+                      ? { title: p.title, images: p.gallery, label: 'Gallery · Confidential', notice: CONFIDENTIAL_NOTICE }
+                      : p.discontinued
+                        ? { title: p.title, images: p.gallery, label: 'Gallery · Discontinued by client', notice: DISCONTINUED_NOTICE }
+                        : { title: p.title, images: p.gallery, label: 'Gallery' })}
+                    aria-haspopup="dialog"
+                  >
+                    <RiImageLine aria-hidden="true" /> Gallery
+                  </button>
+                )}
                 {p.notes && (
                   <button type="button" className="project-live" onClick={() => onNotes(p.notes)} aria-haspopup="dialog">
                     <RiFileList3Line aria-hidden="true" /> Developer notes
@@ -148,7 +167,9 @@ function Card({ p, i, onGallery, onNotes }) {
                 )}
               </>
             )}
-            {(p.discontinued || p.status) && <span className="project-status">{p.discontinued ? 'Discontinued' : p.status}</span>}
+            {p.confidential
+              ? <span className="project-status is-confidential"><RiLockLine aria-hidden="true" /> Confidential</span>
+              : (p.discontinued || p.status) && <span className="project-status">{p.discontinued ? 'Discontinued' : p.status}</span>}
           </div>
         </div>
       </article>
@@ -177,7 +198,7 @@ export default function Projects() {
 
           {/* Bento grid */}
           <div className="bento-grid">
-            {projects.map((p, i) => <Card key={p.title} p={p} i={i} onGallery={setOpen} onNotes={setNotes} />)}
+            {shown.map((p, i) => <Card key={p.title} p={p} i={i} onGallery={setOpen} onNotes={setNotes} />)}
           </div>
         </div>
       </section>
