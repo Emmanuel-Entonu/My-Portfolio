@@ -27,9 +27,9 @@ const CONFIDENTIAL_NOTICE = {
 // Cards whose only visuals are a gallery stay hidden until screenshots are added
 const shown = projects.filter(p => p.image || p.screens || (p.gallery && p.gallery.length > 0));
 
-const CYCLE_MS = 1800;  // time each screen stays up in the card's phones
+const CYCLE_MS = 1800;  // time each screen stays up in the card's phones and gallery covers
 
-/* Crossfades between screenshots inside a phone screen */
+/* Crossfades between screenshots inside a phone screen or a card cover */
 function ScreenFade({ screen, alt }) {
   return (
     <AnimatePresence initial={false}>
@@ -87,6 +87,31 @@ function PhoneShowcase({ screens, launch, title }) {
   );
 }
 
+/* Cover for projects with a gallery: cycles through the screenshots at the same pace as
+   the phones while the card is in view. Images are fetched the first time it comes into view. */
+function GalleryCycle({ images, start, title }) {
+  const ref = useRef(null);
+  const inView = useInView(ref, { margin: '-80px' });
+  const [i, setI] = useState(start);
+  const warmed = useRef(false);
+
+  useEffect(() => {
+    if (!inView) return;
+    if (!warmed.current) {
+      warmed.current = true;
+      images.forEach(s => { const img = new Image(); img.src = s.src; });
+    }
+    const t = setInterval(() => setI(n => (n + 1) % images.length), CYCLE_MS);
+    return () => clearInterval(t);
+  }, [inView, images]);
+
+  return (
+    <div className="media-cycle" ref={ref}>
+      <ScreenFade screen={images[i]} alt={`${title}: ${images[i].caption}`} />
+    </div>
+  );
+}
+
 function Card({ p, i, onGallery, onNotes }) {
   const isClient = p.type === 'client';
   const isApp = Boolean(p.screens);
@@ -108,6 +133,9 @@ function Card({ p, i, onGallery, onNotes }) {
         <div className={`project-media${isApp ? ' is-phones' : ''}`}>
           {isApp ? (
             <PhoneShowcase screens={p.screens} launch={p.launch} title={p.title} />
+          ) : p.gallery?.length > 1 ? (
+            <GalleryCycle images={p.gallery} title={p.title}
+              start={Math.max(0, p.gallery.findIndex(g => g.src === p.image))} />
           ) : (
             <img src={p.image || p.gallery?.[0]?.src} alt={`${p.title} screenshot`} loading="lazy"
               onError={e => { e.currentTarget.style.display = 'none'; }} />

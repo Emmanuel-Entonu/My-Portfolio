@@ -700,6 +700,9 @@ body {
 }
 .project.is-discontinued .project-media img { filter: grayscale(0.8) brightness(0.75); }
 .bento-grid > .is-wide .project-media { height: 260px; }
+/* Gallery covers stack their screenshots so one can fade over the next */
+.media-cycle { position: absolute; inset: 0; }
+.media-cycle img { position: absolute; inset: 0; }
 
 /* Corner tab: flush to the screenshot's top-left, with an angled right edge */
 .badge {
