@@ -18,8 +18,6 @@ export const navLinks = [
   { id: 'faq',      label: 'FAQs' },
 ];
 
-// Logos in /public/clients are one-colour (white + alpha) so CSS can tint them.
-// `ar` = width / height of the trimmed logo file.
 export const clients = [
   { name: 'Canadian College of Technology, Innovation and Business (CCTIB)', logo: '/clients/cctib.png', ar: 3.1 },
   { name: 'Mangrove Technologies',   logo: '/clients/mangrove.png',     ar: 1.23 },
@@ -36,7 +34,6 @@ export const stats = [
   { value: '12', label: 'Technologies' },
 ];
 
-// `color` = the technology's brand colour (darker brand blues lifted slightly to read on black)
 export const skills = [
   { name: 'React',        Icon: SiReact,            color: '#61DAFB' },
   { name: 'Next.js',      Icon: SiNextdotjs,        color: '#FFFFFF' },
@@ -52,13 +49,9 @@ export const skills = [
   { name: 'WordPress',    Icon: SiWordpress,        color: '#3C9BD6' },
 ];
 
-// Gallery screenshots for discontinued projects, which can no longer be visited live.
 const gallery = (folder, captions) =>
   captions.map((caption, i) => ({ src: `/gallery/${folder}/${String(i + 1).padStart(2, '0')}.jpg`, caption }));
 
-// Bento grid: size 'wide' spans 2 columns. Order is tuned so the masonry packs without gaps.
-// Mobile apps use `screens` (phone screenshots) instead of `image` and render in phone frames.
-// Card heights follow their content (masonry), so no row spans are needed.
 export const projects = [
   {
     title: 'ETICO Stock Trading Platform',
@@ -77,7 +70,6 @@ export const projects = [
     desc: 'Stock trading app for the Nigerian Exchange (NGX). Investors verify with BVN and KYC, fund a wallet, follow live prices and charts, and buy and sell ethically screened stocks, with real orders executed through a licensed broker.',
     tags: ['React Native', 'Expo', 'TypeScript', 'Supabase', 'Zustand'],
     appStore: 'https://apps.apple.com/ng/app/etico/id6812737516',
-    // Phone screenshots shown in the phone frames (personal details blurred).
     screens: [
       'Live NGX market prices',
       'Buy order with fees and charges',
@@ -130,7 +122,7 @@ export const projects = [
     desc: "The college's private back office: programs and categories, intakes, applications, students, instructors, enquiries, corporate training requests, news, announcements, media, subscribers, staff accounts and site settings.",
     tags: ['Next.js', 'TypeScript', 'Supabase', 'Tailwind', 'Cloudflare'],
     live: null,
-    image: '/gallery/cctib-admin/02.jpg',  // the programs list makes a better cover than the overview
+    image: '/gallery/cctib-admin/02.jpg',
     gallery: gallery('cctib-admin', [
       'Overview: unread inbox counts, recent applications, upcoming intakes and activity',
       'Programs with duration, tuition, next intake and visibility',
@@ -152,7 +144,6 @@ export const projects = [
     desc: 'The signed-in side of ETICO on the web, where investors manage their money: portfolio and wealth overview, live market data, stock pages with charts, buying and selling, order history, wallet funding, allocation, IPO offers and account settings.',
     tags: ['Next.js', 'TypeScript', 'Supabase', 'Zustand', 'Tailwind'],
     live: 'https://www.etico.ng/app',
-    // Screenshots in /public/gallery/etico-dashboard/ (personal details removed)
     gallery: gallery('etico-dashboard', [
       'Portfolio home: total wealth, IPO banner, watchlist and market pulse',
       "Screened NGX market with today's top movers",
@@ -175,7 +166,6 @@ export const projects = [
     tags: ['Next.js', 'TypeScript', 'Supabase', 'Tailwind'],
     live: null,
     notes: eticoPartnerNotes,
-    // Screenshots in /public/gallery/etico-partner/ (personal details removed)
     gallery: gallery('etico-partner', [
       "KYC review queue and a customer's verification details",
       'Approved account: next of kin, broker account and CSCS / CHN sync',

@@ -63,7 +63,6 @@ export default function DecryptedText({
       for (let i = len - 1; i >= 0; i--) order.push(i);
       return order;
     }
-    // center
     const mid = Math.floor(len / 2);
     let off = 0;
     while (order.length < len) {
@@ -204,14 +203,12 @@ export default function DecryptedText({
     return () => clearInterval(interval);
   }, [isAnimating, text, speed, maxIterations, sequential, revealDirection, shuffleText, direction, fillAllIndices, removeRandomIndices]);
 
-  /* Click */
   const handleClick = () => {
     if (animateOn !== 'click') return;
     if (clickMode === 'once') { if (isDecrypted) return; setDirection('forward'); triggerDecrypt(); }
     if (clickMode === 'toggle') { isDecrypted ? triggerReverse() : (setDirection('forward'), triggerDecrypt()); }
   };
 
-  /* Hover */
   const triggerHoverDecrypt = useCallback(() => {
     if (isAnimating) return;
     setRevealedIndices(new Set()); setIsDecrypted(false); setDisplayText(text);
@@ -223,7 +220,6 @@ export default function DecryptedText({
     setDisplayText(text); setIsDecrypted(true); setDirection('forward');
   }, [text]);
 
-  /* IntersectionObserver for view */
   useEffect(() => {
     if (animateOn !== 'view' && animateOn !== 'inViewHover') return;
     const observer = new IntersectionObserver(
@@ -235,7 +231,6 @@ export default function DecryptedText({
     return () => { if (el) observer.unobserve(el); };
   }, [animateOn, hasAnimated, triggerDecrypt]);
 
-  /* Init */
   useEffect(() => {
     if (animateOn === 'click') encryptInstantly();
     else { setDisplayText(text); setIsDecrypted(true); }

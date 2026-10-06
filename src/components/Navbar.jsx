@@ -18,7 +18,6 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', fn);
   }, []);
 
-  // Scroll-spy: whichever section crosses the middle of the viewport is "active"
   useEffect(() => {
     const io = new IntersectionObserver(
       entries => entries.forEach(e => { if (e.isIntersecting) setActive(e.target.id); }),
@@ -31,7 +30,6 @@ export default function Navbar() {
     return () => io.disconnect();
   }, []);
 
-  // Lock page scroll + close on Escape while the mobile menu is open
   useEffect(() => {
     if (!open) return;
     const onKey = e => { if (e.key === 'Escape') setOpen(false); };
@@ -43,7 +41,6 @@ export default function Navbar() {
     };
   }, [open]);
 
-  // Mobile links: release the scroll lock first, then scroll, so the jump isn't swallowed
   const goTo = id => e => {
     e.preventDefault();
     document.body.style.overflow = '';
@@ -83,7 +80,6 @@ export default function Navbar() {
         </div>
       </motion.header>
 
-      {/* Rendered outside <header>: its backdrop-filter would trap position:fixed children */}
       <AnimatePresence>
         {open && (
           <motion.div

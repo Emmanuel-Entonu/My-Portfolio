@@ -1,6 +1,3 @@
-// Developer notes for the Wymnet SEO project, written up from my delivery report,
-// local SEO summary and phase 2 proposal (September 2026).
-
 const SITE = 'https://wymnet.org';
 
 const trainingPages = [

@@ -2,7 +2,6 @@ import { PiAsteriskBold } from 'react-icons/pi';
 import DecryptedText from './DecryptedText';
 import { clients } from '../content';
 
-// Size logos by area, not height, so wide wordmarks don't dwarf stacked badges
 const logoHeight = ar => Math.min(84, Math.round(Math.sqrt(8100 / ar)));
 
 function Group({ hidden }) {
@@ -24,8 +23,6 @@ function Group({ hidden }) {
   );
 }
 
-/* Infinite marquee: the track holds 4 identical groups and slides left by half its width
-   (2 groups), so the loop is seamless even on very wide screens. */
 export default function Clients() {
   return (
     <>

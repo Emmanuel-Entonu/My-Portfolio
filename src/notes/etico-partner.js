@@ -1,7 +1,3 @@
-// Developer notes for the ETICO partner dashboard, written up from my KYC review,
-// withdrawals and events / IPO handoff docs (September to October 2026).
-// No customer data here, and no internal names, keys or account numbers.
-
 export const eticoPartnerNotes = {
   title: 'ETICO Partner Dashboard',
   subtitle: 'How the brokerage back office works · Next.js, Supabase · 2026',

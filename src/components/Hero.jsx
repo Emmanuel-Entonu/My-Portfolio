@@ -18,7 +18,6 @@ const stagger = { show: { transition: { staggerChildren: 0.1, delayChildren: 0.1
 const fadeUp  = { hidden: { y: 24, opacity: 0 }, show: { y: 0, opacity: 1, transition: { duration: 0.7, ease } } };
 const popIn   = { hidden: { scale: 0.85, opacity: 0 }, show: { scale: 1, opacity: 1, transition: { duration: 0.9, ease } } };
 
-/* Each icon bobs on its own (CSS) and drifts up at its own speed as you scroll. */
 function Floater({ Icon, className, drift, delay }) {
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 900], [0, -drift]);
@@ -47,7 +46,6 @@ function Blank({ text }) {
 export default function Hero() {
   return (
     <section id="hero" className="hero">
-      {/* Molten metal background, behind the icons and content */}
       <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
         <MoltenMetal
           color1="#350e0e"

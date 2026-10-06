@@ -1,5 +1,3 @@
-// Single source for the CV: the /cv page and the Word export both render from this.
-
 export const cv = {
   name: 'Emmanuel Entonu',
   title: 'Chief Software Engineer, Moneta Capital Investment Limited',

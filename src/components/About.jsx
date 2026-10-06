@@ -2,7 +2,6 @@ import Reveal from './Reveal';
 import DecryptedText from './DecryptedText';
 import { socials, stats } from '../content';
 
-// `wide` rows span both columns
 const facts = [
   { label: 'Current role', value: 'Chief Software Engineer, Moneta Capital Investment Limited', wide: true },
   { label: 'Focus',     value: 'Full-Stack Software Development' },

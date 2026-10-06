@@ -42,7 +42,6 @@ export default function Contact() {
           <div className="section-tag"><span><DecryptedText text="Contact" animateOn="view" speed={75} maxIterations={18} encryptedClassName="char-encrypted" className="char-revealed" /></span></div>
 
           <div className="contact-grid">
-            {/* LEFT */}
             <Reveal>
               <h2 className="h2" style={{ fontSize: 'clamp(40px, 6.5vw, 80px)', lineHeight: 0.98 }}>
                 <DecryptedText text="Let's" animateOn="view" sequential revealDirection="start" speed={110} maxIterations={25} encryptedClassName="char-encrypted" className="char-revealed" />
@@ -71,7 +70,6 @@ export default function Contact() {
               </div>
             </Reveal>
 
-            {/* RIGHT — Form (original design) */}
             <motion.div initial={{ x: 30, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true, margin: '-60px' }} transition={{ duration: 0.8, ease: [0.22,1,0.36,1], delay: 0.15 }}>
               {status === 'success' ? (
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: 360, gap: 16, textAlign: 'center' }}>

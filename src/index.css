@@ -1,9 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
-/* ─────────────────────────────────────────────
-   Tokens
-───────────────────────────────────────────── */
 :root {
   --bg: #000000;
   --surface: #0d0d0d;
@@ -52,9 +49,6 @@ body {
 
 #root { width: 100%; position: relative; z-index: 1; }
 
-/* ─────────────────────────────────────────────
-   Shared utilities (kept from the original design)
-───────────────────────────────────────────── */
 .serif { font-family: 'Space Grotesk', 'Inter', sans-serif; }
 
 .char-encrypted { color: rgba(204, 34, 34, 0.55); font-family: 'Space Grotesk', monospace; }
@@ -112,9 +106,6 @@ body {
 
 .lead { font-size: 15px; line-height: 1.85; color: var(--body); }
 
-/* ─────────────────────────────────────────────
-   Buttons & links
-───────────────────────────────────────────── */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -164,9 +155,6 @@ body {
 }
 .icon-link:hover { color: var(--red); border-color: rgba(204, 34, 34, 0.6); transform: translateY(-2px); }
 
-/* ─────────────────────────────────────────────
-   Navbar
-───────────────────────────────────────────── */
 .nav {
   position: fixed;
   inset: 0 0 auto 0;
@@ -213,7 +201,6 @@ body {
   text-decoration: none;
   transition: color 0.3s;
 }
-/* DevFolio-style indicator: a glowing dot that stretches into an underline */
 .nav-link::after {
   content: '';
   position: absolute;
@@ -286,9 +273,6 @@ body {
 .mobile-panel .btn { margin-top: 32px; }
 .mobile-panel .icon-links { margin-top: auto; padding-top: 32px; }
 
-/* ─────────────────────────────────────────────
-   Hero (centred portrait + statement)
-───────────────────────────────────────────── */
 .hero {
   position: relative;
   min-height: 100svh;
@@ -315,7 +299,6 @@ body {
   margin-bottom: 32px;
   border-radius: 50%;
 }
-/* Glow ring */
 .hero-photo::before {
   content: '';
   position: absolute;
@@ -323,7 +306,6 @@ body {
   border-radius: 50%;
   animation: glow-pulse 4.5s ease-in-out infinite;
 }
-/* Offset orbit ring, echoes the old offset photo frames */
 .hero-photo::after {
   content: '';
   position: absolute;
@@ -356,7 +338,6 @@ body {
   color: var(--text);
   text-wrap: balance;
 }
-/* The filled-in "blanks" from the DevFolio sentence */
 .nowrap { white-space: nowrap; }
 .blank {
   position: relative;
@@ -429,7 +410,6 @@ body {
 .scroll-cue:hover { color: var(--red); }
 .scroll-cue svg { font-size: 22px; color: var(--red); animation: bob 1.8s ease-in-out infinite; }
 
-/* Floating line icons */
 .floaters { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
 .floater { position: absolute; color: #fff; font-size: 68px; }
 .floater svg { display: block; animation: float 10s ease-in-out infinite; filter: drop-shadow(0 0 14px rgba(255, 255, 255, 0.28)); }
@@ -459,9 +439,6 @@ body {
   to   { transform: scaleX(1); }
 }
 
-/* ─────────────────────────────────────────────
-   Clients marquee ("Trusted by")
-───────────────────────────────────────────── */
 .clients { padding: 56px 0; overflow: hidden; }
 .clients .section-tag { margin-bottom: 36px; }
 .marquee-mask {
@@ -486,7 +463,6 @@ body {
   align-items: center;
   gap: 56px;
 }
-/* One-colour logo file used as a mask, so it can be tinted cream → red */
 .client-logo {
   display: block;
   flex-shrink: 0;
@@ -505,9 +481,6 @@ body {
   to   { transform: translateX(-50%); }
 }
 
-/* ─────────────────────────────────────────────
-   About
-───────────────────────────────────────────── */
 .about-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -563,9 +536,6 @@ body {
 .fact dt { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(232, 224, 204, 0.4); }
 .fact dd { font-size: 15px; line-height: 1.5; color: #fff; }
 
-/* ─────────────────────────────────────────────
-   Tech stack (text left, logo grid right)
-───────────────────────────────────────────── */
 .stack-grid-wrap {
   display: grid;
   grid-template-columns: 0.85fr 1.15fr;
@@ -620,9 +590,6 @@ body {
   filter: drop-shadow(0 0 18px var(--brand));
 }
 
-/* ─────────────────────────────────────────────
-   Projects
-───────────────────────────────────────────── */
 .projects-head {
   display: flex;
   justify-content: space-between;
@@ -632,8 +599,6 @@ body {
 }
 .projects-head .link-arrow { padding-bottom: 6px; }
 
-/* Bento masonry: tiny 4px rows; each card spans as many rows as its content needs
-   (set in Projects.jsx), so card height follows content. .is-wide spans 2 columns. */
 .bento-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -659,7 +624,6 @@ body {
   box-shadow: 0 24px 64px rgba(204, 34, 34, 0.13);
   transform: translateY(-4px);
 }
-/* Top reveal line */
 .project::before {
   content: '';
   position: absolute;
@@ -700,11 +664,9 @@ body {
 }
 .project.is-discontinued .project-media img { filter: grayscale(0.8) brightness(0.75); }
 .bento-grid > .is-wide .project-media { height: 260px; }
-/* Gallery covers stack their screenshots so one can fade over the next */
 .media-cycle { position: absolute; inset: 0; }
 .media-cycle img { position: absolute; inset: 0; }
 
-/* Corner tab: flush to the screenshot's top-left, with an angled right edge */
 .badge {
   position: absolute;
   top: 0;
@@ -808,9 +770,6 @@ body {
   border: 1px solid rgba(232, 224, 204, 0.4);
 }
 
-/* ─────────────────────────────────────────────
-   Gallery (lightbox for discontinued projects)
-───────────────────────────────────────────── */
 .gallery {
   position: fixed;
   inset: 0;
@@ -930,9 +889,6 @@ body {
 .gallery-thumb:hover { opacity: 0.8; }
 .gallery-thumb.is-active { opacity: 1; border-color: var(--red); box-shadow: 0 0 0 1px var(--red); }
 
-/* ─────────────────────────────────────────────
-   Developer notes (full-screen project write-up)
-───────────────────────────────────────────── */
 .notes {
   position: fixed;
   inset: 0;
@@ -1012,11 +968,6 @@ body {
 .notes-pages a:hover svg { opacity: 1; transform: translate(2px, -2px); }
 .notes-foot { margin-top: 56px; display: flex; justify-content: center; }
 
-/* ─────────────────────────────────────────────
-   Phone frame + app showcase
-───────────────────────────────────────────── */
-/* Google Pixel 6 Pro (black) from Devices.css v0.2.0, MIT License, github.com/picturepan2/devices.css.
-   Ported so every measurement is a multiple of --u (1/404 of the phone width --pw). */
 .phone {
   --pw: 236px;
   --u: calc(var(--pw) / 404);
@@ -1087,7 +1038,6 @@ body {
   margin-left: calc(var(--u) * 40);
   background: #323334;
 }
-/* punch-hole camera + earpiece slit */
 .phone-sensors {
   position: absolute;
   top: calc(var(--u) * 39);
@@ -1120,7 +1070,6 @@ body {
   border-radius: 0 0 50px 50px;
   background: linear-gradient(to bottom, #121212, #666661);
 }
-/* volume rocker + power key */
 .phone-btns,
 .phone-power {
   position: absolute;
@@ -1164,15 +1113,10 @@ body {
 .project:hover .phone-back.is-left { transform: translateX(-66%) rotate(-11deg); }
 .project:hover .phone-back.is-right { transform: translateX(66%) rotate(11deg); }
 
-/* Gallery in phone mode */
-/* phone height = 2.134 × width, so size the width from the available height */
 .gallery.is-phone .gallery-figure .phone { --pw: min(calc((100svh - 290px) / 2.134), 380px, calc(100vw - 56px)); }
 .gallery.is-phone .gallery-thumb { width: 46px; height: 96px; }
 .gallery-figure .phone img { max-width: none; max-height: none; border: 0; box-shadow: none; }
 
-/* ─────────────────────────────────────────────
-   FAQ
-───────────────────────────────────────────── */
 .faq-wrap { max-width: 860px; margin-inline: auto; }
 .faq-head { margin-bottom: 56px; text-align: center; }
 .faq-head .lead { margin-top: 18px; }
@@ -1215,9 +1159,6 @@ body {
 .faq-foot { margin-top: 40px; text-align: center; font-size: 14px; color: rgba(232, 224, 204, 0.4); }
 .faq-foot a { margin-left: 10px; }
 
-/* ─────────────────────────────────────────────
-   Contact
-───────────────────────────────────────────── */
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr 1.1fr;
@@ -1272,9 +1213,6 @@ body {
   gap: 28px;
 }
 
-/* ─────────────────────────────────────────────
-   Footer
-───────────────────────────────────────────── */
 .footer { padding: 56px 0 32px; }
 .footer-top {
   display: flex;
@@ -1310,9 +1248,6 @@ body {
 .footer-bottom a { color: rgba(232, 224, 204, 0.35); text-decoration: none; transition: color 0.25s; }
 .footer-bottom a:hover { color: var(--red); }
 
-/* ─────────────────────────────────────────────
-   TABLET  ≤ 1024px
-───────────────────────────────────────────── */
 @media (max-width: 1024px) {
   .about-grid,
   .stack-grid-wrap,
@@ -1327,9 +1262,6 @@ body {
   .nav-toggle { display: grid; }
 }
 
-/* ─────────────────────────────────────────────
-   MOBILE  ≤ 768px
-───────────────────────────────────────────── */
 @media (max-width: 768px) {
   :root { --nav-h: 64px; }
 
@@ -1396,18 +1328,12 @@ body {
   .footer-top { flex-direction: column; align-items: flex-start; }
 }
 
-/* ─────────────────────────────────────────────
-   SMALL MOBILE  ≤ 480px
-───────────────────────────────────────────── */
 @media (max-width: 480px) {
   .wrap { padding-inline: 16px; }
   .section-pad { padding: 56px 0; }
   .hero-socials small { display: none; }
 }
 
-/* ─────────────────────────────────────────────
-   Reduced motion
-───────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after {

@@ -1,4 +1,3 @@
-// MoltenMetal by React Bits (reactbits.dev), converted from the TypeScript + Tailwind variant.
 import { useEffect, useRef } from 'react';
 import { Renderer, Program, Mesh, Triangle } from 'ogl';
 

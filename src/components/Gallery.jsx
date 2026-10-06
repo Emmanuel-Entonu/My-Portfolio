@@ -12,8 +12,6 @@ const slide = {
   exit:   dir => ({ x: dir > 0 ? -80 : 80, opacity: 0 }),
 };
 
-/* Full-screen screenshot viewer (discontinued sites, or app screens in a phone frame).
-   Arrow keys / swipe to move, Esc or the backdrop to close. */
 export default function Gallery({ title, images, label = 'Gallery', notice, phone = false, onClose }) {
   const [[index, dir], setState] = useState([0, 0]);
   const closeRef = useRef(null);
@@ -26,7 +24,6 @@ export default function Gallery({ title, images, label = 'Gallery', notice, phon
   }, [images.length]);
   const jump = i => setState(([cur]) => [i, i > cur ? 1 : -1]);
 
-  // Lock scroll, wire keys, focus the dialog, and hand focus back on close
   useEffect(() => {
     const opener = document.activeElement;
     const onKey = e => {
@@ -44,7 +41,6 @@ export default function Gallery({ title, images, label = 'Gallery', notice, phon
     };
   }, [go]);
 
-  // Keep the active thumbnail in view
   useEffect(() => {
     thumbsRef.current?.children[index]?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
   }, [index]);

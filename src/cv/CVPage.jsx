@@ -14,7 +14,6 @@ function Section({ title, children }) {
 export default function CVPage() {
   const [status, setStatus] = useState('idle');
 
-  // The Word builder (and the docx library) only load when someone asks for the file
   const downloadWord = async () => {
     setStatus('loading');
     try {
@@ -48,7 +47,6 @@ export default function CVPage() {
         <header className="cv-head">
           <h1>{cv.name}</h1>
           <p className="cv-title">{cv.title}</p>
-          {/* Two lines (location · phone · WhatsApp, then GitHub · portfolio), same as the Word file */}
           {[cv.contacts.slice(0, 2), cv.contacts.slice(2)].map((line, n) => (
             <p key={n} className="cv-contacts">
               {n === 0 && <span>{cv.location}</span>}

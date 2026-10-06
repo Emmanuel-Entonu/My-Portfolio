@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 
-/* Fades + lifts its children into place the first time they scroll into view. */
 export default function Reveal({ children, delay = 0, y = 28, className, ...rest }) {
   return (
     <motion.div

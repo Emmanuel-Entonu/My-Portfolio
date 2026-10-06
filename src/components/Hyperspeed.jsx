@@ -503,7 +503,7 @@ const Hyperspeed = ({ effectOptions = DEFAULT_EFFECT_OPTIONS }) => {
 
         this.renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true });
         this.renderer.setSize(w, h, false);
-        this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // cap at 2x for perf
+        this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         this.composer = new EffectComposer(this.renderer);
         container.append(this.renderer.domElement);
 
@@ -698,14 +698,12 @@ const Hyperspeed = ({ effectOptions = DEFAULT_EFFECT_OPTIONS }) => {
     const container = hyperspeed.current;
     if (!container) return;
 
-    // Detect mobile for lighter settings
     const isMobile = window.innerWidth <= 768;
 
     const options = {
       ...DEFAULT_EFFECT_OPTIONS,
       ...effectOptions,
       colors: { ...DEFAULT_EFFECT_OPTIONS.colors, ...(effectOptions.colors || {}) },
-      // Reduce load on mobile
       lightPairsPerRoadWay: isMobile ? Math.min(effectOptions.lightPairsPerRoadWay ?? DEFAULT_EFFECT_OPTIONS.lightPairsPerRoadWay, 20) : (effectOptions.lightPairsPerRoadWay ?? DEFAULT_EFFECT_OPTIONS.lightPairsPerRoadWay),
       totalSideLightSticks: isMobile ? Math.min(effectOptions.totalSideLightSticks ?? DEFAULT_EFFECT_OPTIONS.totalSideLightSticks, 15) : (effectOptions.totalSideLightSticks ?? DEFAULT_EFFECT_OPTIONS.totalSideLightSticks),
     };

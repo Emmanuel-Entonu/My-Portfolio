@@ -1,7 +1,3 @@
-/* Google Pixel 6 Pro mockup (black), ported from Devices.css by picturepan2 (MIT) and made
-   scalable: set --pw (phone width) and every part scales with it. Its screen is 376×816,
-   the same shape as the app's 1080×2340 screenshots, so they fit with no cropping.
-   Pass `src` for a screenshot, or children for custom screen content. */
 export default function Phone({ src, alt = '', className = '', children }) {
   return (
     <div className={`phone ${className}`}>

@@ -8,28 +8,23 @@ import DevNotes from './DevNotes';
 import Phone from './Phone';
 import { projects } from '../content';
 
-// Masonry: the grid has tiny 4px rows and each card spans as many as its content needs
 const ROW = 4;
 const GAP = 20;
 
-// Shown across the top of the gallery for projects the client has taken down
 const DISCONTINUED_NOTICE = {
   title: 'Discontinued by the client.',
   text: 'This site is no longer live, so these screenshots are kept here to show the work.',
 };
 
-// Shown across the top of the gallery for private dashboards
 const CONFIDENTIAL_NOTICE = {
   title: 'Confidential.',
   text: "This is a private dashboard, so it's shown here as screenshots only, with personal details removed.",
 };
 
-// Cards whose only visuals are a gallery stay hidden until screenshots are added
 const shown = projects.filter(p => p.image || p.screens || (p.gallery && p.gallery.length > 0));
 
-const CYCLE_MS = 1800;  // time each screen stays up in the card's phones and gallery covers
+const CYCLE_MS = 1800;
 
-/* Crossfades between screenshots inside a phone screen or a card cover */
 function ScreenFade({ screen, alt }) {
   return (
     <AnimatePresence initial={false}>
@@ -45,15 +40,11 @@ function ScreenFade({ screen, alt }) {
   );
 }
 
-/* Three phones that keep cycling through the app's screens while the card is in view:
-   front shows the current screen, the two behind show the previous / next one.
-   With no screenshots yet, a single phone shows the app's launch screen. */
 function PhoneShowcase({ screens, launch, title }) {
   const ref = useRef(null);
   const inView = useInView(ref, { margin: '-80px' });
   const [i, setI] = useState(0);
 
-  // Warm the cache so every swap is instant
   useEffect(() => {
     screens.forEach(s => { const img = new Image(); img.src = s.src; });
   }, [screens]);
@@ -87,8 +78,6 @@ function PhoneShowcase({ screens, launch, title }) {
   );
 }
 
-/* Cover for projects with a gallery: cycles through the screenshots at the same pace as
-   the phones while the card is in view. Images are fetched the first time it comes into view. */
 function GalleryCycle({ images, start, title }) {
   const ref = useRef(null);
   const inView = useInView(ref, { margin: '-80px' });
@@ -118,7 +107,6 @@ function Card({ p, i, onGallery, onNotes }) {
   const ref = useRef(null);
   const [span, setSpan] = useState();
 
-  // Keep the card's row span in sync with its real height (fonts, images, resizes)
   useLayoutEffect(() => {
     const el = ref.current;
     if (!el) return;
@@ -224,7 +212,6 @@ export default function Projects() {
             <a href="https://github.com/Emmanuel-Entonu" target="_blank" rel="noopener noreferrer" className="link-arrow">View all on GitHub →</a>
           </Reveal>
 
-          {/* Bento grid */}
           <div className="bento-grid">
             {shown.map((p, i) => <Card key={p.title} p={p} i={i} onGallery={setOpen} onNotes={setNotes} />)}
           </div>

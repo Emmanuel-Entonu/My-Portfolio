@@ -5,8 +5,6 @@ import { RiCloseLine, RiExternalLinkLine, RiArrowRightUpLine } from 'react-icons
 
 const ease = [0.22, 1, 0.36, 1];
 
-/* Full-screen "developer notes" write-up for a project: what was done, then whichever of
-   results, screenshots and pages built the notes include. Esc or the close button to leave. */
 export default function DevNotes({ notes, onClose }) {
   const closeRef = useRef(null);
   const onCloseRef = useRef(onClose);

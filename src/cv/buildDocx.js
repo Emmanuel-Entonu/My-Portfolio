@@ -5,8 +5,6 @@ const INK = '1A1A1A';
 const MUTED = '5F5F5F';
 const FONT = 'Calibri';
 
-/* Builds the CV as a Word document. Takes the `docx` module as an argument so the same
-   code runs in the browser (loaded on demand) and in Node (for checking the output). */
 export function buildCvDocument(d, data = cv) {
   const {
     Document, Paragraph, TextRun, ExternalHyperlink, AlignmentType, LevelFormat, BorderStyle,
@@ -21,7 +19,6 @@ export function buildCvDocument(d, data = cv) {
 
   const bullet = children => new Paragraph({ numbering: { reference: 'bullets', level: 0 }, children });
 
-  // "Role, Org, Place ................ Dates" with the dates pinned to the right margin
   const roleLine = job =>
     new Paragraph({
       keepNext: true,
@@ -43,8 +40,6 @@ export function buildCvDocument(d, data = cv) {
       ],
     });
 
-  // Two contact lines so long links never wrap mid-word:
-  // location · phone · WhatsApp, then GitHub · portfolio
   const sep = () => new TextRun({ text: '   ·   ', color: 'B5B5B5' });
   const contactLine = (items, lead) => {
     const runs = lead ? [new TextRun({ text: lead, color: MUTED })] : [];
@@ -141,13 +136,12 @@ export function buildCvDocument(d, data = cv) {
       }],
     },
     sections: [{
-      properties: { page: { margin: { top: 900, bottom: 900, left: 1000, right: 1000 } } }, // A4 (default size)
+      properties: { page: { margin: { top: 900, bottom: 900, left: 1000, right: 1000 } } },
       children,
     }],
   });
 }
 
-/* Browser: build the .docx on demand and save it. */
 export async function downloadCvDocx() {
   const d = await import('docx');
   const blob = await d.Packer.toBlob(buildCvDocument(d));
